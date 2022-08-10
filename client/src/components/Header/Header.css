@@ -1,0 +1,46 @@
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding-top: 5px;
+  overflow: hidden;
+}
+
+ul.topnav li {float:left;}
+
+ul.topnav li a {
+  display: block;
+  text-align: center;
+  padding: 7px 20px;
+  text-decoration: none;
+}
+ul.right li {
+  float: right; 
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 600px) {
+ul,  .buttons {flex:100%; float: none; width:100%; align-items: center;}
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+  flex:50%
+}
+li{
+  display: inline;
+}
+
+.links{
+  color:#c2c5aa;
+  
+}
+
+.links:hover{
+      color:#bc6c25 ;
+      text-decoration: underline;
+      margin-top: -1.5px;
+  }
+.links:active{
+  color: #992600;
+}
