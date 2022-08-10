@@ -1,10 +1,8 @@
 import { Button } from "@mui/material";
-import useStyles from "./style";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 
 function Header() {
-  const classes = useStyles();
   const styleL = {
     fontSize: "19px",
     color: "#c2c5aa",
@@ -34,7 +32,7 @@ function Header() {
     },
   };
   return (
-    <div className={classes.Header}>
+    <div className="Header">
       <ul className="topnav">
         <li>
           <NavLink
@@ -107,7 +105,7 @@ function Header() {
             LinkComponent={NavLink}
             to="/LogIn"
             variant="outlined"
-            className={` ${classes.loginNavLink} buttons`}
+            className="buttons"
           >
             log in
           </Button>
@@ -128,7 +126,7 @@ function Header() {
             LinkComponent={NavLink}
             to="/SignUp"
             variant="contained"
-            className={` ${classes.signupNavLink} buttons`}
+            className="buttons"
           >
             Sign up
           </Button>
@@ -162,7 +160,7 @@ function Header() {
             }
             LinkComponent={NavLink}
             to="/Dashboard"
-            className={` ${classes.loginNavLink} ${classes.buttons}`}
+            className="buttons"
           >
             Tableau de bord
           </Button>
