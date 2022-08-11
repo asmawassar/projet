@@ -11,6 +11,7 @@ function SignUp() {
     birthDate: "",
     sex: "",
     password: "",
+    passwordCheck: "",
   });
 
   const [error, setError] = React.useState("");
@@ -26,6 +27,11 @@ function SignUp() {
     e.preventDefault();
     setError("");
     setSuccess(false);
+    if (form.password !== form.passwordCheck) {
+      setError("Passwords do not match");
+      setSuccess(false);
+      return;
+    }
     axios({
       method: "post",
       url: "http://localhost:5000/user/signup",
@@ -33,7 +39,6 @@ function SignUp() {
     })
       .then(function () {
         setSuccess(true);
-        window.alert(success);
       })
       .catch(function (error) {
         setError(error.response.data.message);
@@ -88,7 +93,11 @@ function SignUp() {
               />
               <hr />
             </div>
-            <div className="reenterPass">
+            <div
+              value={form.passwordCheck}
+              onChange={(e) => updateForm({ passwordCheck: e.target.value })}
+              className="reenterPass"
+            >
               <label>Verify password</label>
               <input type="password" required />
               <hr />
