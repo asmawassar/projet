@@ -5,23 +5,23 @@ function LogIn() {
     <>
       <div className="center">
         <div className="content">
-          <h1>Login</h1>
+          <h1>Connexion</h1>
           <form method="post">
             <div className="txt">
-              <label>Email</label>
+              <label>Adresse Mail</label>
               <input type="email" required />
               <hr />
             </div>
             <div className="txt">
-              <label>Password</label>
+              <label>Mot de Passe</label>
               <input type="password" required />
               <hr />
             </div>
-            <input type="submit" value="Login" />
+            <input type="submit" value="Se Connecter" />
             <div className="signup_link">
-              Not a member?{" "}
+              Pas Encore un Membre?{" "}
               <NavLink className="signup" to="/SignUp">
-                Sign up
+                Inscrivez-vous
               </NavLink>
             </div>
           </form>
