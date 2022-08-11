@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import jsonwebtoken from "jsonwebtoken";
-import JoiPasswordComplexity from "joi-password-complexity";
-import Joi from "joi";
 
 const jwt = jsonwebtoken;
 const userSchema = new mongoose.Schema(
@@ -40,7 +38,7 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
     },
 
-    password: {
+    role: {
       type: String,
       default: "user",
       required: true,

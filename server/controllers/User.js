@@ -5,10 +5,8 @@ import Users from "../models/User.js";
 const router = express.Router();
 
 export const getUser = async (req, res) => {
-  const { id } = req.params;
-
   try {
-    const user = await Users.findById(id);
+    const user = await Users.find();
     res.status(200).json(user);
   } catch (error) {
     res.status(404).json({ message: error.message });
