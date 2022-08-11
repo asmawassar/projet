@@ -5,32 +5,32 @@ import Users from "../models/User.js";
 const router = express.Router();
 
 export const signUp = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, birthDate, sex, password } = req.body;
   try {
-    if (!firstName || !lastName || !email || !password)
-      return res.status(400).send({ msg: "Please fill in all fields." });
+    if (!firstName || !birthDate || !sex || !lastName || !email || !password)
+      return res.status(400).json({ message: "Please fill in all fields." });
 
     if (!validateEmail(email))
-      return res.status(400).send({ msg: "Invalid email." });
+      return res.status(400).json({ message: "Invalid email." });
 
     const user = await Users.findOne({ email: req.body.email });
     if (user)
-      return res.status(409).send({ msg: "this email already exists." });
+      return res.status(400).json({ message: "this email already exists." });
 
     if (password.length < 6)
       return res
         .status(400)
-        .send({ msg: "Password must be at least 6 characters." });
+        .json({ message: "Password must be at least 6 characters." });
 
     const salt = await bcrypt.genSalt(Number(10));
     const hashPass = await bcrypt.hash(req.body.password, salt);
 
     await new Users({ ...req.body, password: hashPass }).save();
 
-    res.status(201).send({ msg: "Account has been activated!" });
+    res.status(201).json({ message: "Account has been activated!" });
   } catch (err) {
     console.log(err.message);
-    return res.status(500).send({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -39,15 +39,15 @@ export const logIn = async (req, res) => {
     const { email, password } = req.body;
     const user = await Users.findOne({ email });
     if (!user)
-      return res.status(400).send({ msg: "This email does not exist." });
+      return res.status(400).json({ message: "This email does not exist." });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res.status(400).send({ msg: "Password is incorrect." });
+      return res.status(400).json({ message: "Password is incorrect." });
 
-    res.send({ msg: "Login success!" });
+    res.json({ message: "Login success!" });
   } catch (err) {
-    return res.status(500).send({ msg: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 

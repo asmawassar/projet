@@ -27,6 +27,19 @@ const userSchema = new mongoose.Schema(
       unique: true,
     },
 
+    birthDate: {
+      type: String,
+      required: [true, "Please enter your birth date"],
+      trim: true,
+      lowercase: true,
+    },
+
+    sex: {
+      type: String,
+      trim: true,
+      lowercase: true,
+    },
+
     password: {
       type: String,
       required: [true, "Please enter password"],

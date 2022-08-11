@@ -1,17 +1,20 @@
 import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
 import axios from "axios";
+import { Alert } from "@mui/material";
 
 function SignUp() {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
+    birthDate: "",
+    sex: "",
     password: "",
   });
-  const navigate = useNavigate();
-  const [error, setError] = useState("");
+
+  const [error, setError] = React.useState("");
+  const [success, setSuccess] = React.useState(false);
 
   function updateForm(value) {
     return setForm((prev) => {
@@ -21,22 +24,20 @@ function SignUp() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    try {
-      const url = "http://localhost:5000/user/signup";
-      const { form: res } = await axios.post(url, form);
-      navigate("/logIn");
-      console.log(res.message);
-    } catch (err) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.form.message);
-      }
-    }
-
-    setForm({ firstName: "", lastName: "", email: "", password: "" });
+    setError("");
+    setSuccess(false);
+    axios({
+      method: "post",
+      url: "http://localhost:5000/user/signup",
+      data: form,
+    })
+      .then(function () {
+        setSuccess(true);
+        window.alert(success);
+      })
+      .catch(function (error) {
+        setError(error.response.data.message);
+      });
   }
 
   return (
@@ -96,18 +97,30 @@ function SignUp() {
           <div className="Date-sex">
             <div className="Date">
               <label>Date of Birth</label>
-              <input type="date" required />
+              <input
+                value={form.birthDate}
+                onChange={(e) => updateForm({ birthDate: e.target.value })}
+                type="date"
+                required
+              />
             </div>
             <div className="sex">
               <label>Sex</label>
-              <select>
-                <option>Male</option>
-                <option>Female</option>
+              <select onChange={(e) => updateForm({ sex: e.target.value })}>
+                <option value={"male"}>Male</option>
+                <option value={"female"}>Female</option>
               </select>
             </div>
           </div>
-          {error && <div>{error}</div>}
-          <input type="submit" value="Signup" />
+          {error && <Alert severity="error">{error}</Alert>}
+          {success ? (
+            <Alert severity="success">
+              your account has been created plz log in
+            </Alert>
+          ) : (
+            <input type="submit" value="Signup" />
+          )}
+
           <div className="login_link">
             You have an account?{" "}
             <NavLink className="login" to="/LogIn">
