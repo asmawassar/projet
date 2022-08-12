@@ -4,14 +4,14 @@ import Change from "./pages/Change/Change";
 import LogIn from "./pages/LogIn/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import Header from "./components/Header/Header";
-
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Head from "./components/Header/Head";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Head />
       <Routes>
         <Route path="/" element={<Acceuil />} />
         <Route path="/Acceuil" element={<Acceuil />} />
