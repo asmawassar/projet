@@ -65,18 +65,15 @@ function LogIn() {
             </div>
             <div className="txt">
               <label>Mot de Passe</label>
-
-              <input type={state ? "text" : "password"} required />
-              <button className="btn" type='button' onClick={togglebtn}>
-            {state ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-           </button>
-
               <input
-                type="password"
+                type={state ? "text" : "password"}
                 value={data.password}
                 onChange={(e) => handleChange({ password: e.target.value })}
                 required
               />
+                <button className="btn" type='button' onClick={togglebtn}>
+            {state ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+           </button>
               <hr />
             </div>
             {error && <Alert severity="error">{error}</Alert>}
