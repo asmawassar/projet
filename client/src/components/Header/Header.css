@@ -19,7 +19,7 @@ ul.right li {
 }
 
 @media screen and (max-width: 600px) {
-ul,  .buttons {flex:100%; float: none; width:100%; align-items: center;}
+li {flex:100%; margin: 1% ; float: none; width:92%; align-items: center;}
 }
 
 ul {
@@ -43,11 +43,4 @@ li{
   }
 .links:active{
   color: #992600;
-}
-.Header {
-  background-color: #582f0e;
-  padding: 0.5%;
-  font-size: 23px;
-  display: flex;
-  box-shadow: 1px 1px 18px #582f0e;
 }

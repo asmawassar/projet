@@ -1,17 +1,15 @@
 import { Button } from "@mui/material";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import { styleL, ButtonL, styleS, link, styleD } from "./style";
+import { styleL, ButtonL, styleS, link, styleD, header } from "./style";
+import { logout } from "../../action/acces";
 
 function HeaderLog() {
-  function logout() {
-    localStorage.removeItem("key");
-  }
   return (
-    <div className="Header">
+    <div className="Header" style={header}>
       <ul className="topnav">
         <li>
-          <NavLink style={link} className="links" to="/Acceuil">
+          <NavLink style={link} className="links" to="/">
             Acceuil
           </NavLink>
         </li>
@@ -46,7 +44,7 @@ function HeaderLog() {
             sx={styleS}
             style={ButtonL}
             LinkComponent={NavLink}
-            to="/LogIn"
+            to="/profile"
             variant="contained"
             className="buttons"
           >

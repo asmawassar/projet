@@ -1,11 +1,8 @@
 import Header from "./Header";
 import HeaderLog from "./HeaderLog";
+import { getkey } from "../../action/acces";
 
 function Head() {
-  function getkey() {
-    console.log(localStorage.getItem("key"));
-    return localStorage.getItem("key");
-  }
   const success = getkey();
   return <>{success ? <HeaderLog /> : <Header />}</>;
 }

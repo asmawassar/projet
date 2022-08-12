@@ -1,15 +1,16 @@
 import { NavLink } from "react-router-dom";
-import {AiOutlineEyeInvisible,AiOutlineEye} from 'react-icons/ai';
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import axios from "axios";
 import React, { useState } from "react";
 import { Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { setkey } from "../../action/acces";
 
 function LogIn() {
-  const [state,setstate] =useState(false);
+  const [state, setstate] = useState(false);
   const togglebtn = () => {
-       setstate(prevState => !prevState);
-  }
+    setstate((prevState) => !prevState);
+  };
   const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
@@ -37,14 +38,13 @@ function LogIn() {
       data: userData,
     })
       .then(function () {
-        localStorage.setItem("key", "key");
+        setkey(data.email);
         navigate("/Acceuil");
       })
       .catch(function (error) {
         setError(error.response.data.message);
       });
   }
-
 
   return (
     <>
@@ -70,9 +70,9 @@ function LogIn() {
                 onChange={(e) => handleChange({ password: e.target.value })}
                 required
               />
-                <button className="btn" type='button' onClick={togglebtn}>
-            {state ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-           </button>
+              <button className="btn" type="button" onClick={togglebtn}>
+                {state ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </button>
               <hr />
             </div>
             {error && <Alert severity="error">{error}</Alert>}
@@ -89,6 +89,5 @@ function LogIn() {
     </>
   );
 }
-
 
 export default LogIn;

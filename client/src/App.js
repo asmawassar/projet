@@ -4,6 +4,7 @@ import Change from "./pages/Change/Change";
 import LogIn from "./pages/LogIn/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Profile from "./pages/profile/Profile";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Head from "./components/Header/Head";
@@ -14,7 +15,7 @@ function App() {
       <Head />
       <Routes>
         <Route path="/" element={<Acceuil />} />
-        <Route path="/Acceuil" element={<Acceuil />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/Add" element={<Add />} />
         <Route path="/Change" element={<Change />} />
         <Route path="/LogIn" element={<LogIn />} />
