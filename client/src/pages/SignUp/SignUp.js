@@ -2,8 +2,20 @@ import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 import { Alert } from "@mui/material";
+import {AiOutlineEyeInvisible,AiOutlineEye} from 'react-icons/ai';
 
 function SignUp() {
+
+  const [state1,setstate1] =useState(false);
+  const [state2,setstate2] =useState(false);
+  const togglebtn1 = () => {
+       setstate1(prevState => !prevState);
+  }
+  const togglebtn2 = () => {
+    setstate2(prevState => !prevState);
+}
+
+
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -88,9 +100,12 @@ function SignUp() {
               <input
                 value={form.password}
                 onChange={(e) => updateForm({ password: e.target.value })}
-                type="password"
+                type={state1 ? "text" : "password"}
                 required
               />
+              <button className="btn" type='button' onClick={togglebtn1}>
+            {state1 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+           </button>
               <hr />
             </div>
             <div
@@ -99,7 +114,10 @@ function SignUp() {
               className="reenterPass"
             >
               <label>Confirmer Mot de passe</label>
-              <input type="password" required />
+              <input type={state2 ? "text" : "password"} required />
+              <button className="btn" type='button' onClick={togglebtn2}>
+            {state2 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+           </button>
               <hr />
             </div>
           </div>

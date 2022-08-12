@@ -1,6 +1,13 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import {AiOutlineEyeInvisible,AiOutlineEye} from 'react-icons/ai';
 
 function LogIn() {
+
+  const [state,setstate] =useState(false);
+  const togglebtn = () => {
+       setstate(prevState => !prevState);
+  }
   return (
     <>
       <div className="center">
@@ -14,7 +21,10 @@ function LogIn() {
             </div>
             <div className="txt">
               <label>Mot de Passe</label>
-              <input type="password" required />
+              <input type={state ? "text" : "password"} required />
+              <button className="btn" type='button' onClick={togglebtn}>
+            {state ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+           </button>
               <hr />
             </div>
             <input type="submit" value="Se Connecter" />
