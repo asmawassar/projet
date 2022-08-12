@@ -37,12 +37,11 @@ function LogIn() {
       data: userData,
     })
       .then(function () {
-        sessionStorage.setItem("token", "token");
+        localStorage.setItem("key", "key");
         navigate("/Acceuil");
       })
       .catch(function (error) {
         setError(error.response.data.message);
-        window.alert(error.response.data.message);
       });
   }
 

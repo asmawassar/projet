@@ -1,87 +1,24 @@
 import { Button } from "@mui/material";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
+import { styleL, ButtonL, styleS, link, styleD } from "./style";
 
 function Header() {
-  const styleL = {
-    fontSize: "19px",
-    color: "#c2c5aa",
-    borderColor: "#c2c5aa",
-    "&:hover": {
-      backgroundColor: "#bc6c25",
-      borderColor: "transparent",
-      color: "#c2c5aa",
-      marginTop: "-1.5px",
-    },
-    "&:active": {
-      backgroundColor: "#992600",
-    },
-  };
-  const styleS = {
-    fontSize: "19px",
-    color: "#582f0e",
-    backgroundColor: "#c2c5aa",
-    borderColor: "#c2c5aa",
-    "&:hover": {
-      backgroundColor: "#bc6c25",
-      marginTop: "-1.5px",
-      color: "#c2c5aa",
-    },
-    "&:active": {
-      backgroundColor: "#992600",
-    },
-  };
   return (
     <div className="Header">
       <ul className="topnav">
         <li>
-          <NavLink
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    marginTop: "-1.5px",
-                    textDecoration: "none",
-                    color: "#bc6c25",
-                  }
-                : {}
-            }
-            className="links"
-            to="/Acceuil"
-          >
+          <NavLink style={link} className="links" to="/Acceuil">
             Acceuil
           </NavLink>
         </li>
         <li>
-          <NavLink
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    marginTop: "-1.5px",
-                    textDecoration: "none",
-                    color: "#bc6c25",
-                  }
-                : {}
-            }
-            className="links"
-            to="/Add"
-          >
+          <NavLink style={link} className="links" to="/Add">
             A propos
           </NavLink>
         </li>
         <li>
-          <NavLink
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    marginTop: "-1.5px",
-                    textDecoration: "none",
-                    color: "#bc6c25",
-                  }
-                : {}
-            }
-            className="links"
-            to="/Change"
-          >
+          <NavLink style={link} className="links" to="/Change">
             Contact
           </NavLink>
         </li>
@@ -91,17 +28,7 @@ function Header() {
         <li>
           <Button
             sx={styleL}
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    marginTop: "-1.5px",
-                    backgroundColor: "#bc6c25",
-                    borderColor: "transparent",
-                    color: "#c2c5aa",
-                    marginTop: "-1.5px",
-                  }
-                : {}
-            }
+            style={ButtonL}
             LinkComponent={NavLink}
             to="/LogIn"
             variant="outlined"
@@ -113,16 +40,7 @@ function Header() {
         <li>
           <Button
             sx={styleS}
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    marginTop: "-1.5px",
-                    backgroundColor: "#bc6c25",
-                    marginTop: "-1.5px",
-                    color: "#c2c5aa",
-                  }
-                : {}
-            }
+            style={ButtonL}
             LinkComponent={NavLink}
             to="/SignUp"
             variant="contained"
@@ -133,31 +51,8 @@ function Header() {
         </li>
         <li>
           <Button
-            sx={{
-              fontSize: "19px",
-              color: "#c2c5aa",
-              borderColor: "#c2c5aa",
-              "&:hover": {
-                backgroundColor: "#bc6c25",
-                borderColor: "transparent",
-                color: "#c2c5aa",
-                marginTop: "-1.5px",
-              },
-              "&:active": {
-                backgroundColor: "#992600",
-              },
-            }}
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    marginTop: "-1.5px",
-                    backgroundColor: "#bc6c25",
-                    borderColor: "transparent",
-                    color: "#c2c5aa",
-                    marginTop: "-1.5px",
-                  }
-                : {}
-            }
+            sx={styleD}
+            style={ButtonL}
             LinkComponent={NavLink}
             to="/Dashboard"
             className="buttons"

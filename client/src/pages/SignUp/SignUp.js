@@ -63,7 +63,7 @@ function SignUp() {
         <h1>Inscription</h1>
         <form onSubmit={onSubmit}>
           <div className="name">
-          <div className="lastname">
+            <div className="lastname">
               <label>Nom</label>
               <input
                 value={form.lastName}
@@ -149,9 +149,9 @@ function SignUp() {
           )}
 
           <div className="login_link">
-          Vous Avez un Compte?{" "}
+            Vous Avez un Compte?{" "}
             <NavLink className="login" to="/LogIn">
-            Connectez-vous.
+              Connectez-vous.
             </NavLink>
           </div>
         </form>

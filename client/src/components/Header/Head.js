@@ -2,11 +2,11 @@ import Header from "./Header";
 import HeaderLog from "./HeaderLog";
 
 function Head() {
-  function getToken() {
-    console.log(sessionStorage.getItem("token"));
-    return sessionStorage.getItem("token");
+  function getkey() {
+    console.log(localStorage.getItem("key"));
+    return localStorage.getItem("key");
   }
-  const success = getToken();
+  const success = getkey();
   return <>{success ? <HeaderLog /> : <Header />}</>;
 }
 export default Head;

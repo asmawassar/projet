@@ -1,8 +1,5 @@
-import express from "express";
 import bcrypt from "bcrypt";
 import Users from "../models/User.js";
-
-const router = express.Router();
 
 export const getUser = async (req, res) => {
   try {
@@ -53,7 +50,6 @@ export const logIn = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
       return res.status(400).json({ message: "Password is incorrect." });
-
     res.json({ message: "Login success!" });
   } catch (err) {
     return res.status(500).json({ message: err.message });
