@@ -73,7 +73,7 @@ function Add() {
         <div className="row">
           <div className="col1">
             <label className="labelA" for="ajout">
-              Saisir votre indicateur à ajouter :
+              Saisir votre barrage à ajouter :
             </label>
           </div>
           <div className="col2">
