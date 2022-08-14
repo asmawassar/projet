@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  createIndicator,
+  createBarrage,
   getIndicator,
   updateIndicator,
 } from "../controllers/Indicators.js";
@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/get", getIndicator);
 
-router.post("/AddIndicator", createIndicator);
+router.post("/AddBarrage", createBarrage);
 
 router.patch("/update", updateIndicator);
 

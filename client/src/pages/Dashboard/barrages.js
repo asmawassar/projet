@@ -1,7 +1,6 @@
-import { getkey } from "../../action/acces";
+import * as React from "react";
+import Button from "@mui/material/Button";
 
-function barrages() {
-  const success = getkey();
-  return <>{success == "editor" ? <div></div> : <div></div>}</>;
+export default function Barrages() {
+  return <div>hi</div>;
 }
-export default barrages;

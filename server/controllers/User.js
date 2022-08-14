@@ -1,9 +1,21 @@
 import bcrypt from "bcrypt";
 import Users from "../models/User.js";
 
-export const getUser = async (req, res) => {
+export const getUsers = async (req, res) => {
   try {
     const user = await Users.find();
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getUser = async (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+  try {
+    const user = await Users.findOne({ email: "wassar@ensi-uma.tn" });
+    console.log(user);
     res.status(200).json(user);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -50,7 +62,7 @@ export const logIn = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
       return res.status(400).json({ message: "Password is incorrect." });
-    res.json({ message: "Login success!" });
+    res.json({ user });
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }

@@ -1,5 +1,8 @@
 import { TextField } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Alert } from "@mui/material";
+import axios from "axios";
 
 function Add() {
   const jour = new Date().getDate();
@@ -9,6 +12,53 @@ function Add() {
   const anneeC = `${jour}/${mois}/${annee}`;
   const jourP = `${jour - 1}/${mois}/${annee - 1}`;
   const jourC = `${jour}/${mois}/${annee - 1}`;
+
+  const [form, setForm] = useState({
+    nomBarrage: "",
+    StockJour: "",
+    StockBarrage: "",
+    pourcentageStock: "",
+    LacherJour: "",
+    LacherJourL: "",
+    LacherLastYear: "",
+    LacherThisYear: "",
+    LacherMois: "",
+    probs: "",
+    MoyPeriode: "",
+    cumuleLastYear: "",
+    cumuleThisYear: "",
+    moyMois: "",
+    apportMois: "",
+    apportJour: "",
+  });
+
+  const [error, setError] = React.useState("");
+  const [success, setSuccess] = React.useState(false);
+
+  function updateForm(value) {
+    return setForm((prev) => {
+      return { ...prev, ...value };
+    });
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    setError("");
+    setSuccess(false);
+
+    axios({
+      method: "post",
+      url: "http://localhost:5000/barrage/addBarrage",
+      data: form,
+    })
+      .then(function () {
+        setSuccess(true);
+      })
+      .catch(function (error) {
+        setError(error.response.data.message);
+      });
+  }
+
   return (
     <div className="container">
       <div className="head">
@@ -19,7 +69,7 @@ function Add() {
         </h3>
         <h5>Ces Données sont observées à 7h {anneeC}</h5>
       </div>
-      <form className="formA" method="post">
+      <form className="formA" method="post" onSubmit={onSubmit}>
         <div className="row">
           <div className="col1">
             <label className="labelA" for="ajout">
@@ -31,6 +81,8 @@ function Add() {
               type="text"
               label="Saisir votre indicateur à ajouter"
               variant="outlined"
+              value={form.nomBarrage}
+              onChange={(e) => updateForm({ nomBarrage: e.target.value })}
             />
           </div>
         </div>
@@ -55,6 +107,8 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.StockJour}
+                  onChange={(e) => updateForm({ StockJour: e.target.value })}
                 />
               </div>
             </div>
@@ -70,6 +124,8 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.StockBarrage}
+                  onChange={(e) => updateForm({ StockBarrage: e.target.value })}
                 />
               </div>
             </div>
@@ -85,6 +141,10 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.pourcentageStock}
+                  onChange={(e) =>
+                    updateForm({ pourcentageStock: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -104,6 +164,8 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.apportJour}
+                  onChange={(e) => updateForm({ apportJour: e.target.value })}
                 />
               </div>
             </div>
@@ -119,6 +181,8 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.apportMois}
+                  onChange={(e) => updateForm({ apportMois: e.target.value })}
                 />
               </div>
             </div>
@@ -134,6 +198,8 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.moyMois}
+                  onChange={(e) => updateForm({ moyMois: e.target.value })}
                 />
               </div>
             </div>
@@ -149,6 +215,10 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.cumuleThisYear}
+                  onChange={(e) =>
+                    updateForm({ cumuleThisYear: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -164,6 +234,10 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.cumuleLastYear}
+                  onChange={(e) =>
+                    updateForm({ cumuleLastYear: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -179,6 +253,8 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.MoyPeriode}
+                  onChange={(e) => updateForm({ MoyPeriode: e.target.value })}
                 />
               </div>
             </div>
@@ -197,6 +273,10 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.LacherLastYear}
+                  onChange={(e) =>
+                    updateForm({ LacherLastYear: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -212,6 +292,10 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.LacherThisYear}
+                  onChange={(e) =>
+                    updateForm({ LacherThisYear: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -223,7 +307,13 @@ function Add() {
                 </label>
               </div>
               <div className="col2">
-                <TextField type="text" label="Lacher" variant="outlined" />
+                <TextField
+                  type="text"
+                  label="Lacher"
+                  variant="outlined"
+                  value={form.probs}
+                  onChange={(e) => updateForm({ probs: e.target.value })}
+                />
               </div>
             </div>
 
@@ -238,6 +328,8 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.LacherMois}
+                  onChange={(e) => updateForm({ LacherMois: e.target.value })}
                 />
               </div>
             </div>
@@ -253,6 +345,8 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.LacherJour}
+                  onChange={(e) => updateForm({ LacherJour: e.target.value })}
                 />
               </div>
             </div>
@@ -268,390 +362,31 @@ function Add() {
                   type="text"
                   label="ajouter valeur"
                   variant="outlined"
+                  value={form.LacherJourL}
+                  onChange={(e) => updateForm({ LacherJourL: e.target.value })}
                 />
               </div>
             </div>
           </fieldset>
         </fieldset>
-
-        <fieldset className="f1">
-          <legend>
-            <strong>Situation Hydraulique des Barrages Du {anneeC}</strong>
-          </legend>
+        {error && <Alert severity="error">{error}</Alert>}
+        {success ? (
+          <Alert severity="success">
+            Vous Avez Déjà un Compte, Connectez-vous!!
+          </Alert>
+        ) : (
           <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind16">
-                Bassin versant(Km²) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
+            <div className="sumbit">
+              <input
+                className="submitA"
+                type="Submit"
+                id="sub"
+                name="sub"
+                value="Ajouter"
+              ></input>
             </div>
           </div>
-          <fieldset className="f2">
-            <legend>Apports</legend>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind17">
-                  Apport Annuel Moyen(M m3) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind18">
-                  Apport Min depuis mise en eau(M m3) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-          </fieldset>
-          <fieldset className="f2">
-            <legend>Retenue Noramle</legend>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind19">
-                  Côte(m):
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind20">
-                  Cap totale initiale(M m3) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind21">
-                  Cap utile actuelle(M m3) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-          </fieldset>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind22">
-                Volume Régul Calculé(M m3) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind23">
-                Débits max Evacué(m3/s)
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <fieldset className="f2">
-            <legend>Envasement des retenues</legend>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind24">
-                  Envasement des retenues mesuré(M m3) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind25">
-                  Envasement des retenues annuel(M m3):
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind26">
-                  Pourcentage d'Envasement(%) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind27">
-                  Erosion du BV(mm/an) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-          </fieldset>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind28">
-                Cap utile calculé(M m3) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <fieldset className="f2">
-            <legend>Année Hydraulique Précédente</legend>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind29">
-                  Plan d'eau(m) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind30">
-                  Volume(M m3):
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind31">
-                  Apport(M m3) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col1">
-                <label className="labelA" for="ind32">
-                  Soutirage(M m3) :
-                </label>
-              </div>
-              <div className="col2">
-                <TextField
-                  type="text"
-                  label="ajouter valeur"
-                  variant="outlined"
-                />
-              </div>
-            </div>
-          </fieldset>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind33">
-                Côte plan d'eau(m) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind34">
-                Volume correspondant(M m3) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind35">
-                Volume correspondant utilisable(M m3) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind36">
-                Soutirage du {anneeC} (M m3) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind37">
-                Apport du "jour prec"(M m3) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind38">
-                Apport du mois au "jour prec"(M m3) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind39">
-                Pluv(mm) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col1">
-              <label className="labelA" for="ind40">
-                R.S.(g/l) :
-              </label>
-            </div>
-            <div className="col2">
-              <TextField
-                type="text"
-                label="ajouter valeur"
-                variant="outlined"
-              />
-            </div>
-          </div>
-        </fieldset>
-        <div className="row">
-          <div className="sumbit">
-            <input
-              className="submitA"
-              type="Submit"
-              id="sub"
-              name="sub"
-              value="Ajouter"
-            ></input>
-          </div>
-        </div>
+        )}
       </form>
       <h3>Si Vous Voulez Modifier les valeurs d'un indicateur,</h3>{" "}
       <NavLink className="modifier" to="/Change">

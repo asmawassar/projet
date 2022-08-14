@@ -1,20 +1,46 @@
-import { getkey } from "../../action/acces";
-import Admin from "./Admin";
-function barrages() {
-  const success = getkey();
-  return (
-    <>
+import React, { Component } from "react";
+import axios from "axios";
+
+export default class users extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Users: [],
+    };
+  }
+  getUsersData() {
+    axios
+      .get("http://localhost:5000/user/getUsers", {})
+      .then((res) => {
+        const data = res.data;
+        console.log(data);
+        const users = data.map((u) => (
+          <thead key={u.email}>
+            <tr>
+              <td>{u.firstName}</td>
+              <td>{u.lastName}</td>
+              <td>{u.email}</td>
+              <td>{u.role}</td>
+            </tr>
+          </thead>
+        ));
+
+        this.setState({
+          users,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  componentDidMount() {
+    this.getUsersData();
+  }
+  render() {
+    return (
       <div>
-        {success == "admin" ? (
-          <div>
-            <Admin />
-          </div>
-        ) : (
-          <h1>bienvenu a my profile</h1>
-        )}
+        <table border={"2px "}>{this.state.users}</table>
       </div>
-      <div></div>
-    </>
-  );
+    );
+  }
 }
-export default barrages;

@@ -6,10 +6,7 @@ function Tableau() {
   return (
     <>
       {success ? (
-        <div>
-          <Tableau />
-          <tableau />
-        </div>
+        <div></div>
       ) : (
         <NavLink className="login" to="/LogIn">
           Connectez-vous.

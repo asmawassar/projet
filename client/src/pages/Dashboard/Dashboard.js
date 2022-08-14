@@ -1,23 +1,23 @@
-import { getkey } from "../../action/acces";
-import { NavLink } from "react-router-dom";
 import Barrages from "./barrages";
 import Tableau from "./Tableau";
 
-function Dashboard() {
-  const success = getkey();
+import { UserContext } from "../../action/acces";
+import React, { useContext } from "react";
+
+function Head() {
+  const { user, UserState } = useContext(UserContext);
   return (
     <>
-      {success ? (
-        <div>
-          <Barrages />
-          <Tableau />
-        </div>
+      <Barrages />
+      <Tableau />
+      {user.user.role != "user" ? (
+        <>
+          <h1>head</h1>
+        </>
       ) : (
-        <NavLink className="login" to="/LogIn">
-          Connectez-vous.
-        </NavLink>
+        <h1>header</h1>
       )}
     </>
   );
 }
-export default Dashboard;
+export default Head;

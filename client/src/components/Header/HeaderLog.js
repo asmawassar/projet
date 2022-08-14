@@ -2,9 +2,12 @@ import { Button } from "@mui/material";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { styleL, ButtonL, styleS, link, styleD, header } from "./style";
-import { logout } from "../../action/acces";
+import { useContext } from "react";
+import { UserContext } from "../../action/acces";
 
 function HeaderLog() {
+  const { user, userState } = useContext(UserContext);
+
   return (
     <div className="Header" style={header}>
       <ul className="topnav">
@@ -34,7 +37,7 @@ function HeaderLog() {
             to="/logIn"
             variant="outlined"
             className="buttons"
-            onClick={logout()}
+            onClick={() => userState("false")}
           >
             log out
           </Button>

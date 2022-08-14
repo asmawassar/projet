@@ -1,31 +1,36 @@
 import mongoose from "mongoose";
 
-const Indicator = new mongoose.Schema(
+const Barrage = new mongoose.Schema(
   {
-    IndicatorName: {
+    nomBarrage: {
       type: String,
       required: [true, "Please enter Indicator name"],
       trim: true,
       unique: true,
     },
-
+    /********STOCKS********/
     StockJour: {
       type: [Number],
       required: true,
     },
     StockBarrage: {
+      type: [Number],
+      required: true,
+    },
+    pourcentageStock: {
       type: Number,
       required: true,
     },
-
+    /********LACHER********/
     LacherJour: {
       type: [Number],
       required: true,
     },
-    LacherLastJour: {
-      type: Number,
+    LacherJourL: {
+      type: [Number],
       required: true,
     },
+
     LacherLastYear: {
       type: Number,
       required: true,
@@ -38,9 +43,33 @@ const Indicator = new mongoose.Schema(
       type: Number,
       required: true,
     },
-
+    probs: {
+      type: String,
+      required: true,
+    },
+    /********APPORTS********/
     MoyPeriode: {
       type: Number,
+      required: true,
+    },
+    cumuleLastYear: {
+      type: Number,
+      required: true,
+    },
+    cumuleThisYear: {
+      type: Number,
+      required: true,
+    },
+    moyMois: {
+      type: Number,
+      required: true,
+    },
+    apportMois: {
+      type: Number,
+      required: true,
+    },
+    apportJour: {
+      type: [Number],
       required: true,
     },
   },
@@ -49,6 +78,6 @@ const Indicator = new mongoose.Schema(
   }
 );
 
-const model = mongoose.model("IndicatorData", Indicator);
+const model = mongoose.model("Barrage", Barrage);
 
 export default model;

@@ -6,7 +6,7 @@ import cors from "cors";
 import connection from "./db.js";
 
 import routeUser from "./routes/Users.js";
-import routeIndicator from "./routes/Indicators.js";
+import routeBarrage from "./routes/Indicators.js";
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/user", routeUser);
-app.use("/indicator", routeIndicator);
+app.use("/barrage", routeBarrage);
 
 connection();
 

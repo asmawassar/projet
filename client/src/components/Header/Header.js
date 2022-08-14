@@ -1,9 +1,21 @@
-import { Button } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import { styleL, ButtonL, styleS, link, styleD, header } from "./style";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    navigate("/logIn");
+  };
   return (
     <div className="Header" style={header}>
       <ul className="topnav">
@@ -52,13 +64,26 @@ function Header() {
         <li>
           <Button
             sx={styleD}
-            style={ButtonL}
             LinkComponent={NavLink}
-            to="/Dashboard"
+            to="#"
             className="buttons"
+            onClick={handleClickOpen}
           >
             Tableau de bord
           </Button>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Please login first"}
+            </DialogTitle>
+            <DialogActions>
+              <Button onClick={handleClose}>login</Button>
+            </DialogActions>
+          </Dialog>
         </li>
       </ul>
     </div>

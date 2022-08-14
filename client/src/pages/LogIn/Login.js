@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { setkey } from "../../action/acces";
+import { UserContext } from "../../action/acces";
 
 function LogIn() {
+  const { user, userState } = useContext(UserContext);
   const [state, setstate] = useState(false);
   const togglebtn = () => {
     setstate((prevState) => !prevState);
@@ -30,16 +31,20 @@ function LogIn() {
     const userData = {
       email: data.email,
       password: data.password,
+      role: " ",
     };
+    userState("false");
     setError("");
     axios({
       method: "post",
       url: "http://localhost:5000/user/login",
       data: userData,
     })
-      .then(function () {
-        setkey(data.email);
-        navigate("/Acceuil");
+      .then(function (res) {
+        const role = res.data;
+        console.log(role.user.role);
+        userState(role);
+        navigate("/dashboard");
       })
       .catch(function (error) {
         setError(error.response.data.message);
