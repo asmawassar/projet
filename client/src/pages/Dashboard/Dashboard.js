@@ -5,18 +5,12 @@ import { UserContext } from "../../action/acces";
 import React, { useContext } from "react";
 
 function Head() {
-  const { user, UserState } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  console.log(user.role);
   return (
     <>
       <Barrages />
       <Tableau />
-      {user.user.role != "user" ? (
-        <>
-          <h1>head</h1>
-        </>
-      ) : (
-        <h1>header</h1>
-      )}
     </>
   );
 }

@@ -25,12 +25,12 @@ function Header() {
           </NavLink>
         </li>
         <li>
-          <NavLink style={link} className="links" to="/Add">
+          <NavLink style={link} className="links" to="/">
             A propos
           </NavLink>
         </li>
         <li>
-          <NavLink style={link} className="links" to="/Change">
+          <NavLink style={link} className="links" to="/">
             Contact
           </NavLink>
         </li>

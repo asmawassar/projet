@@ -1,21 +1,10 @@
 import bcrypt from "bcrypt";
 import Users from "../models/User.js";
+import mongoose from "mongoose";
 
 export const getUsers = async (req, res) => {
   try {
     const user = await Users.find();
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-export const getUser = async (req, res) => {
-  const { email } = req.body;
-  console.log(email);
-  try {
-    const user = await Users.findOne({ email: "wassar@ensi-uma.tn" });
-    console.log(user);
     res.status(200).json(user);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -66,6 +55,19 @@ export const logIn = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
+};
+
+export const updateUser = async (req, res) => {
+  const { role, id } = req.body;
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No user with id: ${id}`);
+
+  const updateduser = {
+    role: role,
+  };
+  await Users.findByIdAndUpdate(id, updateduser, { new: true });
+
+  res.json(updateduser);
 };
 
 function validateEmail(email) {

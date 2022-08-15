@@ -41,9 +41,8 @@ function LogIn() {
       data: userData,
     })
       .then(function (res) {
-        const role = res.data;
-        console.log(role.user.role);
-        userState(role);
+        const users = res.data.user;
+        userState(users);
         navigate("/dashboard");
       })
       .catch(function (error) {

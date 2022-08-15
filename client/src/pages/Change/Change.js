@@ -1,10 +1,19 @@
 import { NavLink } from "react-router-dom";
-
+import { UserContext } from "../../action/acces";
+import React, { useState, useContext } from "react";
 function Change() {
+  const { user } = useContext(UserContext);
+  function Gender() {
+    if (user.sex === "female") return "Mme";
+    return "Mr";
+  }
+  const gender = Gender();
   return (
     <div class="container">
       <div className="head">
-        <h1>Bienvenue Mr/Mrs ... dans l'interface des indicateurs</h1>
+        <h1>
+          Bienvenue {gender} {user.firstName} dans l'interface des indicateurs
+        </h1>
         <h3>
           Veuillez remplir les cases suivantes avec les valeurs correspondantes
           :{" "}

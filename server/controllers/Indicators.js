@@ -3,10 +3,8 @@ import mongoose from "mongoose";
 import Barrage from "../models/Indicator.js";
 
 export const getIndicator = async (req, res) => {
-  const { id } = req.params;
-
   try {
-    const indicat = await Barrage.findById(id);
+    const indicat = await Barrage.find();
     res.status(200).json(indicat);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -16,21 +14,22 @@ export const getIndicator = async (req, res) => {
 export const createBarrage = async (req, res) => {
   const {
     nomBarrage,
-    StockJour,
-    StockBarrage,
+    stockBarrageC,
+    stockBarrageP,
     pourcentageStock,
-    LacherJour,
-    LacherJourL,
-    LacherLastYear,
-    LacherThisYear,
-    LacherMois,
+    lachersAnneeP,
+    lachersAnneeC,
+    lachersMoisC,
+    lachersJourP,
+    lachersJourC,
     probs,
-    MoyPeriode,
-    cumuleLastYear,
-    cumuleThisYear,
+    moyPeriode,
+    apportsCummuleP,
+    apportsCummuleC,
     moyMois,
     apportMois,
     apportJour,
+    date,
   } = req.body;
   try {
     const user = await Barrage.findOne({ nomBarrage });
@@ -39,41 +38,43 @@ export const createBarrage = async (req, res) => {
       return res.status(400).json({ msg: "This barrage already exists." });
     if (
       !nomBarrage ||
-      !StockJour ||
-      !StockBarrage ||
+      !stockBarrageC ||
+      !stockBarrageP ||
       !pourcentageStock ||
-      !LacherJour ||
-      !LacherJourL ||
-      !LacherLastYear ||
-      !LacherThisYear ||
-      !LacherMois ||
+      !lachersAnneeP ||
+      !lachersAnneeC ||
+      !lachersMoisC ||
+      !lachersJourP ||
+      !lachersJourC ||
       !probs ||
-      !MoyPeriode ||
-      !cumuleLastYear ||
-      !cumuleThisYear ||
+      !moyPeriode ||
+      !apportsCummuleP ||
+      !apportsCummuleC ||
       !moyMois ||
       !apportMois ||
-      !apportJour
+      !apportJour ||
+      !date
     )
       return res.status(400).json({ message: "Please fill in all fields." });
 
     const newBarrage = new Barrage({
       nomBarrage,
-      StockJour,
-      StockBarrage,
+      stockBarrageC,
+      stockBarrageP,
       pourcentageStock,
-      LacherJour,
-      LacherJourL,
-      LacherLastYear,
-      LacherThisYear,
-      LacherMois,
+      lachersAnneeP,
+      lachersAnneeC,
+      lachersMoisC,
+      lachersJourP,
+      lachersJourC,
       probs,
-      MoyPeriode,
-      cumuleLastYear,
-      cumuleThisYear,
+      moyPeriode,
+      apportsCummuleP,
+      apportsCummuleC,
       moyMois,
       apportMois,
       apportJour,
+      date,
     });
     await newBarrage.save();
 

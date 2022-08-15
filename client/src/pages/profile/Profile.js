@@ -1,46 +1,21 @@
-import React, { Component } from "react";
-import axios from "axios";
-
-export default class users extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      Users: [],
-    };
-  }
-  getUsersData() {
-    axios
-      .get("http://localhost:5000/user/getUsers", {})
-      .then((res) => {
-        const data = res.data;
-        console.log(data);
-        const users = data.map((u) => (
-          <thead key={u.email}>
-            <tr>
-              <td>{u.firstName}</td>
-              <td>{u.lastName}</td>
-              <td>{u.email}</td>
-              <td>{u.role}</td>
-            </tr>
-          </thead>
-        ));
-
-        this.setState({
-          users,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-  componentDidMount() {
-    this.getUsersData();
-  }
-  render() {
-    return (
+import { UserContext } from "../../action/acces";
+import React, { useContext } from "react";
+import Admin from "./Admin";
+function Profile() {
+  const { user } = useContext(UserContext);
+  return (
+    <div>
       <div>
-        <table border={"2px "}>{this.state.users}</table>
+        <h1>personal infos : </h1>
+        <h2>nom: {user.lastName}</h2>
+        <h2>prenom: {user.firstName}</h2>
+        <h2>date de naissance: {user.birthDate}</h2>
+        <h2>sex: {user.sex}</h2>
+        <h2>email: {user.email}</h2>
       </div>
-    );
-  }
+      <Admin />
+    </div>
+  );
 }
+
+export default Profile;

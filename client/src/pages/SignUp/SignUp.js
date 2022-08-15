@@ -2,19 +2,17 @@ import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
 import { Alert } from "@mui/material";
-import {AiOutlineEyeInvisible,AiOutlineEye} from 'react-icons/ai';
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 function SignUp() {
-
-  const [state1,setstate1] =useState(false);
-  const [state2,setstate2] =useState(false);
+  const [state1, setstate1] = useState(false);
+  const [state2, setstate2] = useState(false);
   const togglebtn1 = () => {
-       setstate1(prevState => !prevState);
-  }
+    setstate1((prevState) => !prevState);
+  };
   const togglebtn2 = () => {
-    setstate2(prevState => !prevState);
-}
-
+    setstate2((prevState) => !prevState);
+  };
 
   const [form, setForm] = useState({
     firstName: "",
@@ -103,9 +101,9 @@ function SignUp() {
                 type={state1 ? "text" : "password"}
                 required
               />
-              <button className="btn" type='button' onClick={togglebtn1}>
-            {state1 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-           </button>
+              <button className="btn" type="button" onClick={togglebtn1}>
+                {state1 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </button>
               <hr />
             </div>
             <div
@@ -115,9 +113,9 @@ function SignUp() {
             >
               <label>Confirmer Mot de passe</label>
               <input type={state2 ? "text" : "password"} required />
-              <button className="btn" type='button' onClick={togglebtn2}>
-            {state2 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-           </button>
+              <button className="btn" type="button" onClick={togglebtn2}>
+                {state2 ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </button>
               <hr />
             </div>
           </div>
