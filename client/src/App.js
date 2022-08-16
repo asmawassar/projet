@@ -6,14 +6,12 @@ import SignUp from "./pages/SignUp/SignUp";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Profile from "./pages/profile/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Head from "./components/Header/Head";
+import Head from "./components/Header/Header";
 import { UserContext } from "./action/acces";
 import { useState, useMemo } from "react";
 function App() {
   const [user, userState] = useState("false");
-
   const providerValue = useMemo(() => ({ user, userState }), [user, userState]);
-
   return (
     <UserContext.Provider value={providerValue}>
       <BrowserRouter>

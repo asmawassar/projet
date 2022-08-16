@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Button from "@mui/material/Button";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -32,7 +31,6 @@ function Tableau() {
       },
     },
   };
-  const [barrage, setBarrage] = useState([]);
   const [labels, setLabel] = useState([]);
   const [stockJour, setSj] = useState([]);
   const [stockJourP, setSjP] = useState([]);

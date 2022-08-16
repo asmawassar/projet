@@ -8,12 +8,13 @@ const Barrage = new mongoose.Schema(
       trim: true,
       unique: true,
     },
+
     /********STOCKS********/
-    StockJour: {
+    stockBarrageC: {
       type: [Number],
       required: true,
     },
-    StockBarrage: {
+    stockBarrageP: {
       type: [Number],
       required: true,
     },
@@ -22,24 +23,24 @@ const Barrage = new mongoose.Schema(
       required: true,
     },
     /********LACHER********/
-    LacherJour: {
+    lachersAnneeP: {
       type: [Number],
       required: true,
     },
-    LacherJourL: {
+    lachersAnneeC: {
       type: [Number],
       required: true,
     },
 
-    LacherLastYear: {
+    lachersMoisC: {
       type: Number,
       required: true,
     },
-    LacherThisYear: {
+    lachersJourP: {
       type: Number,
       required: true,
     },
-    LacherMois: {
+    lachersJourC: {
       type: Number,
       required: true,
     },
@@ -48,15 +49,15 @@ const Barrage = new mongoose.Schema(
       required: true,
     },
     /********APPORTS********/
-    MoyPeriode: {
+    moyPeriode: {
       type: Number,
       required: true,
     },
-    cumuleLastYear: {
+    apportsCummuleP: {
       type: Number,
       required: true,
     },
-    cumuleThisYear: {
+    apportsCummuleC: {
       type: Number,
       required: true,
     },
@@ -70,6 +71,10 @@ const Barrage = new mongoose.Schema(
     },
     apportJour: {
       type: [Number],
+      required: true,
+    },
+    date: {
+      type: [String],
       required: true,
     },
   },
