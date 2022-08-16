@@ -85,22 +85,49 @@ export const createBarrage = async (req, res) => {
 };
 
 export const updateIndicator = async (req, res) => {
-  const { id } = req.params;
-  const { title, message, creator, selectedFile, tags } = req.body;
-
+  const {
+    StockBarrageC,
+    stockBarrageP,
+    pourcentageStock,
+    lachersAnneeP,
+    lachersAnneeC,
+    lachersMoisC,
+    lachersJourP,
+    lachersJourC,
+    probs,
+    moyPeriode,
+    apportsCummuleP,
+    apportsCummuleC,
+    moyMois,
+    apportMois,
+    apportJour,
+    date,
+    id,
+  } = req.body;
+  console.log(id);
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No Indicator with id: ${id}`);
 
   const updatedIndicator = {
-    creator,
-    title,
-    message,
-    tags,
-    selectedFile,
-    _id: id,
+    stockBarrageC: StockBarrageC,
+    stockBarrageP: stockBarrageP,
+    pourcentageStock: pourcentageStock,
+    lachersAnneeP: lachersAnneeP,
+    lachersAnneeC: lachersAnneeC,
+    lachersMoisC: lachersMoisC,
+    lachersJourP: lachersJourP,
+    lachersJourC: lachersJourC,
+    probs: probs,
+    moyPeriode: moyPeriode,
+    apportsCummuleP: apportsCummuleP,
+    apportsCummuleC: apportsCummuleC,
+    moyMois: moyMois,
+    apportMois: apportMois,
+    apportJour: apportJour,
+    date: date,
   };
 
-  await indicator.findByIdAndUpdate(id, updatedIndicator, { new: true });
+  await Barrage.findByIdAndUpdate(id, updatedIndicator, { new: true });
 
   res.json(updatedIndicator);
 };

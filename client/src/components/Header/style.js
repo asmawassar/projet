@@ -1,72 +1,44 @@
-export const header = {
-  backgroundColor: "#582f0e",
-  padding: "0.5%",
-  fontSize: "23px",
-  display: "flex",
-  boxShadow: "1px 1px 18px #582f0e",
+export const Bar = {
+  backgroundColor: "#f3feff",
+  boxShadow: "0.1px 0.1px 10px #83c5be",
 };
 
-export const styleL = {
-  fontSize: "19px",
-  color: "#c2c5aa",
-  borderColor: "#c2c5aa",
+export const ButtonS = {
+  fontSize: "17px",
+  color: "#023e8a",
+  borderRadius: 0,
   "&:hover": {
-    backgroundColor: "#bc6c25",
-    borderColor: "transparent",
-    color: "#c2c5aa",
+    color: "#f3feff",
+    backgroundColor: "#023e8a",
+    borderColor: "#023e8a",
     marginTop: "-1.5px",
   },
-  "&:active": {
-    backgroundColor: "#992600",
-  },
 };
 
-export const styleD = {
-  fontSize: "19px",
-  color: "#c2c5aa",
-  borderColor: "#c2c5aa",
-  "&:hover": {
-    backgroundColor: "#bc6c25",
-    borderColor: "transparent",
-    color: "#c2c5aa",
-    marginTop: "-1.5px",
-  },
-  "&:active": {
-    backgroundColor: "#992600",
-  },
-};
-
-export const ButtonL = ({ isActive }) =>
+export const ButtonA = ({ isActive }) =>
   isActive
     ? {
         marginTop: "-1.5px",
-        backgroundColor: "#bc6c25",
-        borderColor: "transparent",
-        color: "#c2c5aa",
-        marginTop: "-1.5px",
+        color: "#f3feff",
+        backgroundColor: "#03045e",
+        borderColor: "#03045e",
       }
     : {};
 
-export const link = ({ isActive }) =>
+export const linkA = ({ isActive }) =>
   isActive
     ? {
         marginTop: "-1.5px",
-        textDecoration: "none",
-        color: "#bc6c25",
+        color: "#03045e",
       }
     : {};
-
-export const styleS = {
+export const linkS = {
+  fontWeight: "bold",
   fontSize: "19px",
-  color: "#582f0e",
-  backgroundColor: "#c2c5aa",
-  borderColor: "#c2c5aa",
+  textTransform: "none",
+  color: "#023e8a",
   "&:hover": {
-    backgroundColor: "#bc6c25",
+    color: "#03045e",
     marginTop: "-1.5px",
-    color: "#c2c5aa",
-  },
-  "&:active": {
-    backgroundColor: "#992600",
   },
 };

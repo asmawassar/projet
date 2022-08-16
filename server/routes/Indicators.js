@@ -11,6 +11,6 @@ router.get("/get", getIndicator);
 
 router.post("/AddBarrage", createBarrage);
 
-router.patch("/update", updateIndicator);
+router.put("/update", updateIndicator);
 
 export default router;
