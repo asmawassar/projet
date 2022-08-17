@@ -45,6 +45,8 @@ export const logIn = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await Users.findOne({ email });
+    if (!validateEmail(email))
+      return res.status(400).json({ message: "Invalid email." });
     if (!user)
       return res.status(400).json({ message: "This email does not exist." });
 

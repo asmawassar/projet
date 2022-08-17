@@ -1,16 +1,16 @@
 import { AppBar, Stack, Button, Toolbar } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { ButtonA, linkA, Bar, ButtonS, linkS } from "./style";
-import { Log, Profile, TabBoard } from "./Head";
+import { Log, Profile, TabBoard ,Links} from "./Head";
 import { UserContext } from "../../action/acces";
 import  { useContext } from "react";
 
 function Header() {
   const { userState } = useContext(UserContext);
-  
   function test() {
     if (Log() === "logout") userState("false");
   }
+  const linkk=Links();
   return (
     <AppBar sx={Bar}>
       <Toolbar>
@@ -19,11 +19,11 @@ function Header() {
             Acceuil
           </Button>
 
-          <Button LinkComponent={NavLink} style={linkA} sx={linkS} to="/">
+          <Button LinkComponent={NavLink} style={linkA} sx={linkS} to="/apropos">
             A propos
           </Button>
 
-          <Button LinkComponent={NavLink} style={linkA} sx={linkS} to="/">
+          <Button LinkComponent={NavLink} style={linkA} sx={linkS} to="/contact">
             Contact
           </Button>
         </Stack>
@@ -31,7 +31,7 @@ function Header() {
           <TabBoard />
           <Button
             LinkComponent={NavLink}
-            style={ButtonA}
+            style={ButtonA} 
             sx={ButtonS}
             to="/LogIn"
             onClick={test}
@@ -42,7 +42,7 @@ function Header() {
             LinkComponent={NavLink}
             style={ButtonA}
             sx={ButtonS}
-            to="/SignUp"
+            to={linkk}
           >
             <Profile />
           </Button>

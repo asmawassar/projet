@@ -12,6 +12,14 @@ export function Log() {
   return "login";
 }
 
+export function Links(){
+  const { user } = useContext(UserContext);
+  if (user === "false") {
+    return "/signup";
+  }
+  return "/profile";
+}
+
 export function Profile() {
   const { user } = useContext(UserContext);
   if (user !== "false") return "Profile";

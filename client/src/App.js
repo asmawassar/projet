@@ -1,4 +1,6 @@
 import Acceuil from "./pages/Acceuil/Acceuil";
+import Apropos from "./pages/Acceuil/Apropos";
+import Contact from "./pages/Acceuil/Contact";
 import Add from "./pages/Add/Add";
 import Change from "./pages/Change/Change";
 import LogIn from "./pages/LogIn/LogIn";
@@ -18,6 +20,8 @@ function App() {
         <Head />
         <Routes>
           <Route path="/" element={<Acceuil />} />
+          <Route path="/apropos" element={<Apropos />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/Add" element={<Add />} />
           <Route path="/Change" element={<Change />} />

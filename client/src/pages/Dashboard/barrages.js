@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import { Button, Drawer, Box, Toolbar, Divider } from "@mui/material";
+import {
+  Paper,
+  ListItemButton,
+  MenuItem,
+  MenuList,
+  Toolbar,
+  Divider,
+} from "@mui/material";
 function Barrages() {
   const [Barrage, setBarrage] = useState([]);
   async function fetchData() {
@@ -10,10 +17,12 @@ function Barrages() {
       const data = res.data;
       const barrages = data.map((u) => {
         return (
-          <>
-            <Button key={u._id}>{u.nomBarrage}</Button>
+          <div key={u.nomBarrage}>
+            <MenuItem>
+              <ListItemButton inset>{u.nomBarrage}</ListItemButton>
+            </MenuItem>
             <Divider />
-          </>
+          </div>
         );
       });
       setBarrage(barrages);
@@ -22,30 +31,19 @@ function Barrages() {
     }
   }
   fetchData();
-
-  const drawerWidth = 240;
   return (
-    <Box sx={{ display: "flex" }}>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box",
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Toolbar />
-        <Divider />
+    <Paper sx={{ width: "100%", height: "100%" }}>
+      <Toolbar />
+      <MenuList>
         {Barrage}
-        <Button LinkComponent={NavLink} to="/Add">
-          ajouter un barrage
-        </Button>
-      </Drawer>
-    </Box>
+        <MenuItem>
+          <ListItemButton inset LinkComponent={NavLink} to="/Add">
+            ajouter un barrage
+          </ListItemButton>
+        </MenuItem>
+        <Divider />
+      </MenuList>
+    </Paper>
   );
 }
 
