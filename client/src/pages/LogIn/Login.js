@@ -1,13 +1,12 @@
-import { NavLink } from "react-router-dom";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import axios from "axios";
 import React, { useContext, useState } from "react";
-import { Alert } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Alert, Stack, Button, TextField, MenuItem } from "@mui/material";
+import { useNavigate, NavLink } from "react-router-dom";
 import { UserContext } from "../../action/acces";
 
 function LogIn() {
-  const { user, userState } = useContext(UserContext);
+  const { userState } = useContext(UserContext);
   const [state, setstate] = useState(false);
   const togglebtn = () => {
     setstate((prevState) => !prevState);
@@ -56,37 +55,32 @@ function LogIn() {
         <div className="content">
           <h1>Connexion</h1>
           <form method="post" onSubmit={onSubmit}>
-            <div className="txt">
-              <label>Adresse Mail</label>
-              <input
-                type="email"
+            <Stack m={2} spacing={3}>
+              <TextField
+                type="mail"
+                label="Adresse Mail"
                 value={data.email}
                 onChange={(e) => handleChange({ email: e.target.value })}
                 required
               />
-              <hr />
-            </div>
-            <div className="txt">
-              <label>Mot de Passe</label>
-              <input
-                type={state ? "text" : "password"}
+
+              <TextField
+                type="password"
+                label="Mot de passe"
                 value={data.password}
                 onChange={(e) => handleChange({ password: e.target.value })}
                 required
               />
-              <button className="btn" type="button" onClick={togglebtn}>
-                {state ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-              </button>
-              <hr />
-            </div>
-            {error && <Alert severity="error">{error}</Alert>}
-            <input type="submit" value="Se Connecter" />
-            <div className="signup_link">
-              Pas Encore un Membre?{" "}
-              <NavLink className="signup" to="/SignUp">
-                Inscrivez-vous
-              </NavLink>
-            </div>
+
+              {error && <Alert severity="error">{error}</Alert>}
+              <input type="submit" value="Se Connecter" />
+              <div className="signup_link">
+                Pas Encore un Membre?{" "}
+                <NavLink className="signup" to="/SignUp">
+                  Inscrivez-vous
+                </NavLink>
+              </div>
+            </Stack>
           </form>
         </div>
       </div>
