@@ -29,12 +29,12 @@ export function ChartBar(labels, value1, value2) {
     datasets: [
       {
         label: "de l'anneé 2022 ",
-        data: labels.map(() => value1),
+        data: value1,
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
         label: "de l'anneé 2021",
-        data: labels.map(() => value2),
+        data: value2,
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],

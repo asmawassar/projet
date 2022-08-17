@@ -15,7 +15,6 @@ function Tableau() {
   const data2 = ChartBar(labels, barrage.lachersJourC, barrage.lachersJourP);
   const data4 = ChartLine(labels, "test", [0, barrage.apportJour]);
   const data3 = ChartPie("pourcentageStock", barrage.pourcentageStock);
-
   return (
     <>
       <div className="stocks">

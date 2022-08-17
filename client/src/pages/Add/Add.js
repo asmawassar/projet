@@ -23,22 +23,22 @@ function Add() {
   const gender = Gender();
 
   const [form, setForm] = useState({
-    nomBarrage: "",
-    stockBarrageC: "",
-    stockBarrageP: "",
-    pourcentageStock: "",
-    lachersAnneeP: "",
-    lachersAnneeC: "",
-    lachersMoisC: "",
-    lachersJourP: "",
-    lachersJourC: "",
+    nomBarrage: 0,
+    stockBarrageC: 0,
+    stockBarrageP: 0,
+    pourcentageStock: 0,
+    lachersAnneeP: 0,
+    lachersAnneeC: 0,
+    lachersMoisC: 0,
+    lachersJourP: 0,
+    lachersJourC: 0,
     probs: "",
-    moyPeriode: "",
-    apportsCummuleP: "",
-    apportsCummuleC: "",
-    moyMois: "",
-    apportMois: "",
-    apportJour: "",
+    moyPeriode: 0,
+    apportsCummuleP: 0,
+    apportsCummuleC: 0,
+    moyMois: 0,
+    apportMois: 0,
+    apportJour: 0,
     date: `${jour - 1}/${mois}`,
   });
 
@@ -52,7 +52,7 @@ function Add() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    setError("");
+    setError(0);
     axios({
       method: "post",
       url: "http://localhost:5000/barrage/addBarrage",

@@ -23,26 +23,26 @@ function Change() {
   const gender = Gender();
 
   const [form, setForm] = useState({
-    stockBarrageC: "",
-    stockBarrageP: "",
-    pourcentageStock: "",
-    lachersAnneeP: "",
-    lachersAnneeC: "",
-    lachersMoisC: "",
-    lachersJourP: "",
-    lachersJourC: "",
+    stockBarrageC: 0,
+    stockBarrageP: 0,
+    pourcentageStock: 0,
+    lachersAnneeP: 0,
+    lachersAnneeC: 0,
+    lachersMoisC: 0,
+    lachersJourP: 0,
+    lachersJourC: 0,
     probs: "",
-    moyPeriode: "",
-    apportsCummuleP: "",
-    apportsCummuleC: "",
-    moyMois: "",
-    apportMois: "",
-    apportJour: "",
-    date: anneeC,
-    id: "62fa94ca97eb0fa469eeeb80",
+    moyPeriode: 0,
+    apportsCummuleP: 0,
+    apportsCummuleC: 0,
+    moyMois: 0,
+    apportMois: 0,
+    apportJour: 0,
+    date: `${jour - 1}/${mois}`,
+    id: "62fd711bf6962c968afc8460",
   });
 
-  const [error, setError] = React.useState("");
+  const [error, setError] = React.useState(0);
 
   function updateForm(value) {
     return setForm((prev) => {
@@ -52,7 +52,7 @@ function Change() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    setError("");
+    setError(0);
     axios({
       method: "put",
       url: "http://localhost:5000/barrage/update",
@@ -74,7 +74,7 @@ function Change() {
         </h1>
         <h3>
           Veuillez remplir les cases suivantes avec les valeurs correspondantes
-          :{" "}
+          :
         </h3>
         <h5>Ces Données sont observées à 7h {anneeC}</h5>
       </div>
@@ -93,7 +93,6 @@ function Change() {
                   Stocks Du {anneeP} :
                 </label>
               </div>
-
               <div className="col2">
                 <TextField
                   type="text"
