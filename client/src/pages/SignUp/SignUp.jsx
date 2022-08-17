@@ -18,7 +18,7 @@ function SignUp() {
     firstName: "",
     lastName: "",
     email: "",
-    birthDate: "1999-01-01",
+    birthDate: "",
     sex: "Homme",
     password: "",
     passwordCheck: "",
@@ -97,6 +97,7 @@ function SignUp() {
             <TextField
               type="date"
               label="date"
+              InputLabelProps={{ shrink:true}}
               value={form.birthDate}
               onChange={(e) => updateForm({ birthDate: e.target.value })}
               required

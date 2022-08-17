@@ -13,9 +13,15 @@ import { UserContext } from "./action/acces";
 import { useState, useMemo } from "react";
 function App() {
   const [user, userState] = useState("false");
-  const providerValue = useMemo(() => ({ user, userState }), [user, userState]);
+  const [barrage, barrageState] = useState("false");
+
+  const userValue = useMemo(
+    () => ({ user, userState, barrage, barrageState }),
+    [user, userState, barrage, barrageState]
+  );
+
   return (
-    <UserContext.Provider value={providerValue}>
+    <UserContext.Provider value={userValue}>
       <BrowserRouter>
         <Head />
         <Routes>

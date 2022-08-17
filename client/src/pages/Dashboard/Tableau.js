@@ -1,68 +1,35 @@
-import React, { useState } from "react";
-import axios from "axios";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import React, { useContext } from "react";
+import { UserContext } from "../../action/acces";
+import { Bar, Pie, Line } from "react-chartjs-2";
+import { ChartBar, ChartLine, options, ChartPie } from "./action";
 function Tableau() {
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: true,
-        text: "Stocks aux barrages",
-      },
-    },
-  };
-  const [labels, setLabel] = useState([]);
-  const [stockJour, setSj] = useState([]);
-  const [stockJourP, setSjP] = useState([]);
+  const { barrage } = useContext(UserContext);
+  const labels = barrage.date;
+  const option = options("stock du barrage");
+  const option1 = options("lachers du barrage");
+  const option2 = options("Apports");
+  const option3 = options("Test");
 
-  async function fetchData() {
-    try {
-      const res = await axios.get("http://localhost:5000/barrage/get");
-      const data = res.data[1];
-      setLabel(res.data[1].date);
-      setSj(data.stockBarrageC);
-      setSjP(data.stockBarrageP);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  fetchData();
+  const data = ChartBar(labels, barrage.stockBarrageC, barrage.stockBarrageP);
+  const data1 = ChartBar(labels, barrage.lachersAnneeC, barrage.lachersAnneeP);
+  const data2 = ChartBar(labels, barrage.lachersJourC, barrage.lachersJourP);
+  const data4 = ChartLine(labels, "test", [0, barrage.apportJour]);
+  const data3 = ChartPie("pourcentageStock", barrage.pourcentageStock);
 
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: "du ",
-        data: labels.map(() => stockJour),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-      {
-        label: "Dataset 2",
-        data: labels.map(() => stockJourP),
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-      },
-    ],
-  };
-  return <Bar options={options} data={data} />;
+  return (
+    <>
+      <div className="stocks">
+        <h1>STOCKS</h1>
+        <Bar options={option} data={data} />
+        <Pie data={data3} />
+      </div>
+      <div className="Lachers">
+        <h1>LACHERS</h1>
+        <Bar options={option1} data={data1} />
+        <Bar options={option2} data={data2} />
+        <Line options={option3} data={data4} />
+      </div>
+    </>
+  );
 }
 export default Tableau;

@@ -39,7 +39,7 @@ function Add() {
     moyMois: "",
     apportMois: "",
     apportJour: "",
-    date: anneeC,
+    date: `${jour - 1}/${mois}`,
   });
 
   const [error, setError] = React.useState("");

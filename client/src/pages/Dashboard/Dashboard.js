@@ -4,8 +4,16 @@ import { Toolbar, Box } from "@mui/material";
 import { UserContext } from "../../action/acces";
 import React, { useContext } from "react";
 import { box, barrageS, tableauS } from "./style";
-function Head() {
+function Dashboard() {
   const { user } = useContext(UserContext);
+  const { barrage } = useContext(UserContext);
+  function test() {
+    if (barrage !== "false") {
+      return <Tableau />;
+    }
+    return <>choisir le barrage que vous voulez</>;
+  }
+  const Test = test();
   return (
     <>
       <Toolbar />
@@ -13,11 +21,9 @@ function Head() {
         <div style={barrageS}>
           <Barrages />
         </div>
-        <div style={tableauS}>
-          <Tableau />
-        </div>
+        <div style={tableauS}>{Test}</div>
       </Box>
     </>
   );
 }
-export default Head;
+export default Dashboard;
