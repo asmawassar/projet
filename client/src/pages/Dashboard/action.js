@@ -47,9 +47,29 @@ export function ChartLine(labels, label, value) {
     datasets: [
       {
         label: label,
-        data: labels.map(() => value),
+        data: value,
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+    ],
+  };
+}
+
+export function ChartLine2(labels, value1, value2) {
+  return {
+    labels,
+    datasets: [
+      {
+        label: 2021,
+        data: value1,
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: 2022,
+        data: value2,
+        borderColor: "rgba(53, 162, 235, 0.5)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
   };

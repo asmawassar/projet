@@ -10,6 +10,7 @@ import {
   MenuList,
   Toolbar,
   Divider,
+  Button,
 } from "@mui/material";
 function Barrages() {
   const { barrage, barrageState } = useContext(UserContext);
@@ -48,9 +49,9 @@ function Barrages() {
       <MenuList>
         {Barrage}
         <MenuItem>
-          <ListItemButton inset="true" LinkComponent={NavLink} to="/Add">
+          <Button LinkComponent={NavLink} to="/Add">
             ajouter un barrage
-          </ListItemButton>
+          </Button>
         </MenuItem>
         <Divider />
       </MenuList>

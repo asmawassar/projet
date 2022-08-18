@@ -3,9 +3,10 @@ import Tableau from "./Tableau";
 import { Toolbar, Box } from "@mui/material";
 import { UserContext } from "../../action/acces";
 import React, { useContext } from "react";
-import { box, barrageS, tableauS } from "./style";
+import { barrageS, tableauS } from "./style";
 function Dashboard() {
   const { user } = useContext(UserContext);
+  console.log(user);
   const { barrage } = useContext(UserContext);
   function test() {
     if (barrage !== "false") {
@@ -13,15 +14,18 @@ function Dashboard() {
     }
     return <>choisir le barrage que vous voulez</>;
   }
-  const Test = test();
   return (
     <>
       <Toolbar />
-      <Box style={box}>
-        <div style={barrageS}>
+      <Box
+        style={{
+          display: "flex",
+        }}
+      >
+        <Box style={barrageS}>
           <Barrages />
-        </div>
-        <div style={tableauS}>{Test}</div>
+        </Box>
+        <Box style={tableauS}>{test()}</Box>
       </Box>
     </>
   );
