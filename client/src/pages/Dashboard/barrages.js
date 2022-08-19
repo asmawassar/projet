@@ -13,7 +13,7 @@ import {
   Button,
 } from "@mui/material";
 function Barrages() {
-  const { barrage, barrageState } = useContext(UserContext);
+  const { barrageState } = useContext(UserContext);
 
   const [Barrage, setBarrage] = useState([]);
 
@@ -24,7 +24,6 @@ function Barrages() {
       const barrages = data.map((u) => {
         function change() {
           barrageState(u);
-          console.log(barrage);
         }
         return (
           <div key={u.nomBarrage}>

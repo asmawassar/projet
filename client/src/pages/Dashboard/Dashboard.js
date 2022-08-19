@@ -6,7 +6,6 @@ import React, { useContext } from "react";
 import { barrageS, tableauS } from "./style";
 function Dashboard() {
   const { user } = useContext(UserContext);
-  console.log(user);
   const { barrage } = useContext(UserContext);
   function test() {
     if (barrage !== "false") {

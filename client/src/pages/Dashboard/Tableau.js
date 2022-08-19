@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { cadre } from "./style";
-import { Stack, Table, TableBody, TableCell, TableHead } from "@mui/material";
+import { Stack, Table, TableBody, TableRow, TableCell, TableHead } from "@mui/material";
 import { Box } from "@mui/system";
 import { UserContext } from "../../action/acces";
 import { Stocks, Lachers, Apports } from "./dessin";
@@ -26,14 +26,18 @@ function Tableau() {
         {Apports()}
         <Table>
           <TableHead>
-            <TableCell>Moyenne du période</TableCell>
-            <TableCell>Moyenne du mois</TableCell>
-            <TableCell>Valeur du jour</TableCell>
+            <TableRow>
+              <TableCell>Moyenne du période</TableCell>
+              <TableCell>Moyenne du mois</TableCell>
+              <TableCell>Valeur du jour</TableCell>
+            </TableRow>
           </TableHead>
           <TableBody>
-            <TableCell>{barrage.moyPeriode}</TableCell>
-            <TableCell>{barrage.moyMois}</TableCell>
-            <TableCell>{barrage.apportJour}</TableCell>
+            <TableRow>
+              <TableCell>{barrage.moyPeriode}</TableCell>
+              <TableCell>{barrage.moyMois}</TableCell>
+              <TableCell>{barrage.apportJour}</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </Stack>

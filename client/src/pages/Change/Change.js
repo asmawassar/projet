@@ -68,40 +68,13 @@ function Change() {
                 onChange={(e) => updateForm({ stockBarrageP: e.target.value })}
                 required
               />
-              <TextField
-                type="text"
-                label={`Pourcentage Du Plénitude Du ${anneeC}`}
-                value={form.pourcentageStock}
-                onChange={(e) =>
-                  updateForm({ pourcentageStock: e.target.value })
-                }
-                required
-              />
+
             </Stack>
           </fieldset>
           <fieldset className="f2">
             <legend>Lachers</legend>
             <Stack m={2} spacing={3} sx={field}>
-              <TextField
-                type="text"
-                label={`Lachers Cumulées Du l'année ${jourEtAnneP}`}
-                value={form.lachersAnneeP}
-                onChange={(e) => updateForm({ lachersAnneeP: e.target.value })}
-                required
-              />
-              <TextField
-                type="text"
-                label={`Lachers Cumulées Du l'année au ${jourP}`}
-                value={form.lachersAnneeC}
-                onChange={(e) => updateForm({ lachersAnneeC: e.target.value })}
-              />
-              <TextField
-                type="text"
-                label={`Lachers Cumulées Du Mois au ${jourP}`}
-                required
-                value={form.lachersMoisC}
-                onChange={(e) => updateForm({ lachersMoisC: e.target.value })}
-              />
+
               <TextField
                 type="text"
                 label={`Lachers Du ${jourEtAnneP}`}
@@ -136,24 +109,7 @@ function Change() {
                 value={form.moyPeriode}
                 onChange={(e) => updateForm({ moyPeriode: e.target.value })}
               />
-              <TextField
-                type="text"
-                label={`  Apports Cumulés Du 01/09/20 au ${jourEtAnneP}`}
-                required
-                value={form.apportsCummuleP}
-                onChange={(e) =>
-                  updateForm({ apportsCummuleP: e.target.value })
-                }
-              />
-              <TextField
-                type="text"
-                label={`Apports Cumulés Du 01/09/21 au ${jourP}`}
-                required
-                value={form.apportsCummuleC}
-                onChange={(e) =>
-                  updateForm({ apportsCummuleC: e.target.value })
-                }
-              />
+
               <TextField
                 type="text"
                 label="Moyenne Du Mois"
@@ -161,13 +117,7 @@ function Change() {
                 value={form.moyMois}
                 onChange={(e) => updateForm({ moyMois: e.target.value })}
               />
-              <TextField
-                type="text"
-                label={` Apports Du Mois au ${jourP}`}
-                required
-                value={form.apportMois}
-                onChange={(e) => updateForm({ apportMois: e.target.value })}
-              />
+
               <TextField
                 type="text"
                 label={`Apports Du ${jourP}`}

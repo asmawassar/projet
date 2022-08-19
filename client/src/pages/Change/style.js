@@ -27,7 +27,7 @@ export const box = {
 };
 
 export const buttonS = {
-  width: "40%",
+  width: "30%",
   fontSize: "17px",
   color: "white",
   borderRadius: 1,
@@ -35,6 +35,6 @@ export const buttonS = {
     color: "#f3feff",
     backgroundColor: "#023e8a",
     borderColor: "#023e8a",
-    width: "41%",
+    width: "31%",
   },
 };

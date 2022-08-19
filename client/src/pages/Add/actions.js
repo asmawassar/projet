@@ -62,3 +62,8 @@ export function Gender() {
   if (user.sex === "female") return "Mme";
   return "Mr";
 }
+
+export function stocks(val1, val2, val3, val4) {
+  if (!val1 || !val2 || !val3 || !val4) return false;
+  return true;
+}
