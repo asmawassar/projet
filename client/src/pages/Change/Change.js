@@ -45,7 +45,7 @@ function Change() {
     <Box className="container">
       <Toolbar />
       <h1>
-        Bienvenue {Gender()} {user.lastName.toUpperCase()} {user.firstName}
+        Bienvenue {Gender()} {user.lastName.toUpperCase()} {user.firstName.toUpperCase()}
       </h1>
       <h3>update barrage {barrage.nomBarrage} :</h3>
       <h5>Ces Données sont observées à 7h {anneeC}</h5>

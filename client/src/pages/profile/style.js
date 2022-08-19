@@ -1,5 +1,5 @@
 export const Infos = {
-  flex: 2.5,
+  flex: 2.8,
 };
 
 export const admin = {
