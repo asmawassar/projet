@@ -43,7 +43,8 @@ function Add() {
         navigate("/dashboard");
       })
       .catch(function (error) {
-        setError(error.response.data.message);
+        setError(error.response.data.msg);
+        console.log(error.response.data)
       });
   }
 

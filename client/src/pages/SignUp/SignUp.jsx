@@ -1,17 +1,8 @@
+import { Alert, Box,Stack,Button,Toolbar, MenuItem, TextField,} from "@mui/material";
+import { formS, stack, row } from "../LogIn/style";
 import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
-import { formS, stack } from "../LogIn/style";
-
-import {
-  Alert,
-  Box,
-  Stack,
-  Button,
-  Toolbar,
-  MenuItem,
-  TextField,
-} from "@mui/material";
 
 function SignUp() {
   const [form, setForm] = useState({
@@ -59,6 +50,7 @@ function SignUp() {
         <form onSubmit={onSubmit}>
           <Stack m={2} spacing={3} sx={stack}>
             <h1>Inscription</h1>
+            <Stack {...row}>
             <TextField
               type="text"
               label="Nom"
@@ -72,7 +64,7 @@ function SignUp() {
               value={form.firstName}
               onChange={(e) => updateForm({ firstName: e.target.value })}
               required
-            />
+            /></Stack>
             <TextField
               type="email"
               label="Adresse Mail"
@@ -80,6 +72,7 @@ function SignUp() {
               onChange={(e) => updateForm({ email: e.target.value })}
               required
             />
+            <Stack {...row}>
             <TextField
               type="password"
               label="Mot de passe"
@@ -93,7 +86,7 @@ function SignUp() {
               value={form.passwordCheck}
               onChange={(e) => updateForm({ passwordCheck: e.target.value })}
               required
-            />
+            /></Stack> <Stack {...row}>
             <TextField
               type="date"
               label="date"
@@ -102,6 +95,7 @@ function SignUp() {
               onChange={(e) => updateForm({ birthDate: e.target.value })}
               required
             />
+           
             <TextField
               select
               label="sexe"
@@ -110,7 +104,7 @@ function SignUp() {
             >
               <MenuItem value="Homme">Homme</MenuItem>
               <MenuItem value="Femme">Femme</MenuItem>
-            </TextField>
+            </TextField></Stack>
             {error && <Alert severity="error">{error}</Alert>}
             {success ? (
               <Alert severity="success">

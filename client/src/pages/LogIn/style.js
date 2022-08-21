@@ -14,3 +14,9 @@ export const stack = {
   borderColor: "#023e8a",
   backgroundColor: "#83c5be",
 };
+
+export const row = {
+  direction: "row",
+  justifyContent: "space-between",
+  alignItems: "center"
+}

@@ -2,19 +2,17 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../action/acces";
-
+import { SearchAppBar } from "../Add/boutons";
 import {
   Paper,
   ListItemButton,
   MenuItem,
   MenuList,
-  Toolbar,
   Divider,
   Button,
 } from "@mui/material";
 function Barrages() {
-  const { barrageState } = useContext(UserContext);
-
+  const { user, barrageState } = useContext(UserContext);
   const [Barrage, setBarrage] = useState([]);
 
   async function fetchData() {
@@ -44,15 +42,16 @@ function Barrages() {
   fetchData();
   return (
     <Paper sx={{ width: "100%", height: "100%" }}>
-      <Toolbar />
+      {SearchAppBar()}
       <MenuList>
         {Barrage}
         <MenuItem>
-          <Button LinkComponent={NavLink} to="/Add">
-            ajouter un barrage
-          </Button>
+          {(user.role === "editor" || user.role === "admin") ?
+            (<Button LinkComponent={NavLink} to="/Add">
+              ajouter un barrage<Divider />
+            </Button>) : (<></>)}
         </MenuItem>
-        <Divider />
+
       </MenuList>
     </Paper>
   );

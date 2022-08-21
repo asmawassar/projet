@@ -21,4 +21,4 @@ export const bar = {
 
 export const pie = {
   width: "40%",
-};
+};    
