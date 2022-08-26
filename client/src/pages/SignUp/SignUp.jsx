@@ -101,6 +101,7 @@ function SignUp() {
               label="sexe"
               value={form.sex }
               onChange={(e) => updateForm({ sex: e.target.value })}
+              required
             >
               <MenuItem value="Homme">Homme</MenuItem>
               <MenuItem value="Femme">Femme</MenuItem>

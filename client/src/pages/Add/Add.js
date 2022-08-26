@@ -53,7 +53,7 @@ function Add() {
       <Toolbar />
 
       <h1>
-        Bienvenue {Gender()} {user.lastName.toUpperCase()} {user.firstName}
+        Bienvenue {Gender()} {user.lastName.toUpperCase()} {user.firstName.toUpperCase()}
       </h1>
       <h3>
         Veuillez remplir les cases suivantes avec les valeurs correspondantes :

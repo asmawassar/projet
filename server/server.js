@@ -6,7 +6,7 @@ import cors from "cors";
 import connection from "./db.js";
 
 import routeUser from "./routes/Users.js";
-import routeBarrage from "./routes/Indicators.js";
+import routeBarrage from "./routes/Indicateur.js";
 
 const app = express();
 

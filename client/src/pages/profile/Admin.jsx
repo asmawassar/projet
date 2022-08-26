@@ -35,7 +35,6 @@ function Admin() {
       .then(function () {
         setOpen(true);
         setRole("");
-
       })
       .catch(function (error) {
         setWarning(true);

@@ -5,7 +5,6 @@ import { ButtonA, ButtonS } from "./style";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export function Log() {
-
   const { user } = useContext(UserContext);
   if (user !== "false") {
     return "logout";

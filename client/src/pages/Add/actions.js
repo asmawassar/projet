@@ -34,7 +34,6 @@ export function Form() {
 
 export function FormC() {
   const { barrage } = useContext(UserContext);
-
   const [form, setForm] = useState({
     stockBarrageC: null,
     stockBarrageP: null,

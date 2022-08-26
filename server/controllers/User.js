@@ -12,9 +12,31 @@ export const getUsers = async (req, res) => {
 };
 
 export const signUp = async (req, res) => {
-  const { firstName, lastName, email, birthDate, sex, password } = req.body;
+  const {
+    nom,
+    prenom,
+    email,
+    naissance,
+    sexe,
+    password,
+    gouvernorat,
+    occupation,
+    entreprise,
+    tel,
+  } = req.body;
   try {
-    if (!firstName || !birthDate || !sex || !lastName || !email || !password)
+    if (
+      !nom ||
+      !naissance ||
+      !sexe ||
+      !prenom ||
+      !gouvernorat ||
+      !occupation ||
+      !entreprise ||
+      !tel ||
+      !email ||
+      !password
+    )
       return res.status(400).json({ message: "Please fill in all fields." });
 
     if (!validateEmail(email))
@@ -61,9 +83,6 @@ export const logIn = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const { role, id } = req.body;
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No user with id: ${id}`);
-
   const updateduser = {
     role: role,
   };
