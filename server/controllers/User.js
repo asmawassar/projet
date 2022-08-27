@@ -27,9 +27,9 @@ export const signUp = async (req, res) => {
   try {
     if (
       !nom ||
+      !prenom ||
       !naissance ||
       !sexe ||
-      !prenom ||
       !gouvernorat ||
       !occupation ||
       !entreprise ||

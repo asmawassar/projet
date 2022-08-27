@@ -11,19 +11,6 @@ export const getIndicators = async (res) => {
   }
 };
 
-export const createIndicator = async (req, res) => {
-  const { nomBarrage } = req.body;
-  try {
-    const newBarrage = new indicateur({
-      nomBarrage,
-    });
-    await newBarrage.save();
-    res.status(201).json(newBarrage);
-  } catch (error) {
-    res.status(409).json({ message: error.message });
-  }
-};
-
 export const updateIndicator = async (req, res) => {
   const {
     nomBarrage,
@@ -68,6 +55,7 @@ export const updateIndicator = async (req, res) => {
 
 export const editIndicator = async (req, res) => {
   const {
+    id,
     stockBarrage,
     lachersAnnee,
     lachersMois,
@@ -81,10 +69,7 @@ export const editIndicator = async (req, res) => {
     date,
     annee,
     mois,
-    id,
   } = req.body;
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`No Indicator with id: ${id}`);
 
   const updatedIndicator = await indicateur.findOneAndUpdate(
     id,

@@ -1,20 +1,19 @@
 import express from "express";
 import {
-  createIndicator,
   editIndicator,
   getIndicators,
   updateIndicator,
 } from "../controllers/Indicateur.js";
+import { createBarrage } from "../controllers/barrage.js";
 
 const router = express.Router();
 
-router.get("/get", getIndicators);
+router.post("/create", createBarrage);
 
-router.post("/create", createIndicator);
+router.get("/get", getIndicators);
 
 router.put("/update", updateIndicator);
 
 router.put("/edit", editIndicator);
-
 
 export default router;

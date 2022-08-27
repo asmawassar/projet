@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+ 
 const barrage = new mongoose.Schema(
     {
         nomBarrage: {

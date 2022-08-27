@@ -6,12 +6,16 @@ import axios from "axios";
 
 function SignUp() {
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
+    nom: "",
+    prenom: "",
     email: "",
-    birthDate: "",
-    sex: "Homme",
+    naissance: "",
+    sexe: "Homme",
     password: "",
+    gouvernorat:"",
+    occupation:"",
+    entreprise:"",
+    tel:"",
     passwordCheck: "",
   });
   const [error, setError] = React.useState("");
@@ -24,6 +28,7 @@ function SignUp() {
 
   async function onSubmit(e) {
     e.preventDefault();
+    console.log(form)
     setError("");
     setSuccess(false);
     if (form.password !== form.passwordCheck) {
@@ -54,15 +59,15 @@ function SignUp() {
             <TextField
               type="text"
               label="Nom"
-              value={form.lastName}
-              onChange={(e) => updateForm({ lastName: e.target.value })}
+              value={form.prenom}
+              onChange={(e) => updateForm({ prenom: e.target.value })}
               required
             />
             <TextField
               type="text"
               label="Prénom"
-              value={form.firstName}
-              onChange={(e) => updateForm({ firstName: e.target.value })}
+              value={form.nom}
+              onChange={(e) => updateForm({ nom: e.target.value })}
               required
             /></Stack>
             <TextField
@@ -72,6 +77,36 @@ function SignUp() {
               onChange={(e) => updateForm({ email: e.target.value })}
               required
             />
+              <Stack {...row}>
+            <TextField
+              type="text"
+              label="gouvernorat"
+              value={form.gouvernorat}
+              onChange={(e) => updateForm({ gouvernorat: e.target.value })}
+              required
+            />
+            <TextField
+              type="text"
+              label="entreprise"
+              value={form.entreprise}
+              onChange={(e) => updateForm({ entreprise: e.target.value })}
+              required
+            /></Stack> 
+             <Stack {...row}>
+            <TextField
+              type="text"
+              label="occupation"
+              value={form.occupation}
+              onChange={(e) => updateForm({ occupation: e.target.value })}
+              required
+            />
+            <TextField
+              type="text"
+              label="numero de tel"
+              value={form.tel}
+              onChange={(e) => updateForm({ tel: e.target.value })}
+              required
+            /></Stack> 
             <Stack {...row}>
             <TextField
               type="password"
@@ -91,16 +126,16 @@ function SignUp() {
               type="date"
               label="date"
               InputLabelProps={{ shrink:true}}
-              value={form.birthDate}
-              onChange={(e) => updateForm({ birthDate: e.target.value })}
+              value={form.naissance}
+              onChange={(e) => updateForm({ naissance: e.target.value })}
               required
             />
            
             <TextField
               select
-              label="sexe"
-              value={form.sex }
-              onChange={(e) => updateForm({ sex: e.target.value })}
+              label="sexee"
+              value={form.sexe }
+              onChange={(e) => updateForm({ sexe: e.target.value })}
               required
             >
               <MenuItem value="Homme">Homme</MenuItem>
