@@ -49,10 +49,10 @@ function SignUp() {
       });
   }
   return (
-    <>
+    < >
       <Toolbar />
-      <Box sx={formS}>
-        <form onSubmit={onSubmit}>
+      <Box  sx={formS}>
+        <form onSubmit={onSubmit}> 
           <Stack m={2} spacing={3} sx={stack}>
             <h1>Inscription</h1>
             <Stack {...row}>

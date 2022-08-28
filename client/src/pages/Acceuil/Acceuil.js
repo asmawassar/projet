@@ -1,5 +1,4 @@
 import { Toolbar } from "@mui/material";
-
 function Acceuil() {
   return (
     <div>

@@ -7,6 +7,7 @@ import LogIn from "./pages/LogIn/LogIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Profile from "./pages/profile/Profile";
+import Barrages from "./pages/barrage/barrage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Head from "./components/Header/Header";
 import { UserContext } from "./action/acces";
@@ -14,10 +15,18 @@ import { useState, useMemo } from "react";
 function App() {
   const [user, userState] = useState("false");
   const [barrage, barrageState] = useState("false");
+  const [indicateur, indicateurState] = useState("false");
 
   const userValue = useMemo(
-    () => ({ user, userState, barrage, barrageState }),
-    [user, userState, barrage, barrageState]
+    () => ({
+      user,
+      userState,
+      barrage,
+      barrageState,
+      indicateur,
+      indicateurState,
+    }),
+    [user, userState, barrage, barrageState, indicateur, indicateurState]
   );
 
   return (
@@ -27,6 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Acceuil />} />
           <Route path="/apropos" element={<Apropos />} />
+          <Route path="/barrage" element={<Barrages />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/Add" element={<Add />} />

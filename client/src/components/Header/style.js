@@ -1,16 +1,16 @@
 export const Bar = {
-  backgroundColor: "#f3feff",
-  boxShadow: "0.1px 0.1px 10px #83c5be",
+  backgroundColor: "rgb(26, 26, 64)",
+  boxShadow: "0.1px 0.1px 10px #161D6F",
 };
 
 export const ButtonS = {
   fontSize: "17px",
-  color: "#023e8a",
+  color: " #f3feff",
   borderRadius: 0,
   "&:hover": {
-    color: "#f3feff",
-    backgroundColor: "#023e8a",
-    borderColor: "#023e8a",
+    color: "#023e8a",
+    backgroundColor: " #f3feff",
+    borderColor: " #f3feff",
     marginTop: "-1.5px",
   },
 };
@@ -36,7 +36,7 @@ export const linkS = {
   fontWeight: "bold",
   fontSize: "19px",
   textTransform: "none",
-  color: "#023e8a",
+  color: " #f3feff",
   "&:hover": {
     color: "#03045e",
     marginTop: "-1.5px",

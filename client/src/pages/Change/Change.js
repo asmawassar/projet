@@ -44,9 +44,7 @@ function Change() {
   return (
     <Box className="container">
       <Toolbar />
-      <h1>
-        Bienvenue {Gender()} {user.lastName.toUpperCase()} {user.firstName.toUpperCase()}
-      </h1>
+      <h1>Bienvenue {Gender()}</h1>
       <h3>update barrage {barrage.nomBarrage} :</h3>
       <h5>Ces Données sont observées à 7h {anneeC}</h5>
       <form className="formA" method="post" onSubmit={onSubmit} style={formS}>
@@ -57,37 +55,35 @@ function Change() {
               <TextField
                 type="text"
                 label={`Stocks Du ${anneeP}`}
-                value={form.stockBarrageC}
-                onChange={(e) => updateForm({ stockBarrageC: e.target.value })}
+                value={form.stockBarrage}
+                onChange={(e) => updateForm({ stockBarrage: e.target.value })}
                 required
               />
-              <TextField
-                type="text"
-                label={` Stocks Du ${anneeC}`}
-                value={form.stockBarrageP}
-                onChange={(e) => updateForm({ stockBarrageP: e.target.value })}
-                required
-              />
-
             </Stack>
           </fieldset>
           <fieldset className="f2">
             <legend>Lachers</legend>
             <Stack m={2} spacing={3} sx={field}>
-
               <TextField
                 type="text"
                 label={`Lachers Du ${jourEtAnneP}`}
                 required
-                value={form.lachersJourP}
-                onChange={(e) => updateForm({ lachersJourP: e.target.value })}
+                value={form.lachersAnnee}
+                onChange={(e) => updateForm({ lachersAnnee: e.target.value })}
               />
               <TextField
                 type="text"
-                label={`Lachers au ${jourP}`}
+                label={`Lachers Du ${jourEtAnneP}`}
                 required
-                value={form.lachersJourC}
-                onChange={(e) => updateForm({ lachersJourC: e.target.value })}
+                value={form.lachersMois}
+                onChange={(e) => updateForm({ lachersMois: e.target.value })}
+              />
+              <TextField
+                type="text"
+                label={`Lachers Du ${jourEtAnneP}`}
+                required
+                value={form.lachersJour}
+                onChange={(e) => updateForm({ lachersJour: e.target.value })}
               />
               <TextField
                 type="text"
@@ -109,6 +105,13 @@ function Change() {
                 value={form.moyPeriode}
                 onChange={(e) => updateForm({ moyPeriode: e.target.value })}
               />
+              <TextField
+                type="text"
+                label={`Apports Du ${jourP}`}
+                required
+                value={form.apportsCummule}
+                onChange={(e) => updateForm({ apportsCummule: e.target.value })}
+              />
 
               <TextField
                 type="text"
@@ -117,7 +120,13 @@ function Change() {
                 value={form.moyMois}
                 onChange={(e) => updateForm({ moyMois: e.target.value })}
               />
-
+              <TextField
+                type="text"
+                label={`Apports Du ${jourP}`}
+                required
+                value={form.apportMois}
+                onChange={(e) => updateForm({ apportMois: e.target.value })}
+              />
               <TextField
                 type="text"
                 label={`Apports Du ${jourP}`}

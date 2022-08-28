@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 import indicateur from "../models/Indicateur.js";
 
-export const getIndicators = async (res) => {
+export const getIndicators = async (req, res) => {
   try {
     const indicator = await indicateur.find();
     res.status(200).json(indicator);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: error });
   }
 };
 
@@ -28,6 +28,7 @@ export const updateIndicator = async (req, res) => {
     annee,
     mois,
   } = req.body;
+  console.log(req.body);
   const updatedIndicator = await indicateur.findOneAndUpdate(
     { nomBarrage: nomBarrage },
     {

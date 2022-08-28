@@ -8,15 +8,13 @@ export const formS = {
 
 export const stack = {
   width: "100%",
-  border: 2,
-  borderRadius: 1,
   padding: "15px",
-  borderColor: "#023e8a",
-  backgroundColor: "#83c5be",
+  background: "linear-gradient( rgb(85, 73, 148), rgb(85, 73, 148,0.2) )",
+  backgroundRepeat: " no-repeat",
 };
 
 export const row = {
   direction: "row",
   justifyContent: "space-between",
-  alignItems: "center"
-}
+  alignItems: "center",
+};

@@ -12,22 +12,19 @@ export const jourP = `${jour - 1}/${mois}/${annee}`;
 export function Form() {
   const [form, setForm] = useState({
     nomBarrage: null,
-    stockBarrageC: null,
-    stockBarrageP: null,
-    pourcentageStock: null,
-    lachersAnneeP: null,
-    lachersAnneeC: null,
-    lachersMoisC: null,
-    lachersJourP: null,
-    lachersJourC: null,
+    stockBarrage: null,
+    lachersAnnee: null,
+    lachersMois: null,
+    lachersJour: null,
     probs: "",
     moyPeriode: null,
-    apportsCummuleP: null,
-    apportsCummuleC: null,
+    apportsCummule: null,
     moyMois: null,
     apportMois: null,
     apportJour: null,
-    date: `${jour - 1}/${mois}`,
+    date: anneeC,
+    annee: annee,
+    mois: mois,
   });
   return [form, setForm];
 }
@@ -35,23 +32,20 @@ export function Form() {
 export function FormC() {
   const { barrage } = useContext(UserContext);
   const [form, setForm] = useState({
-    stockBarrageC: null,
-    stockBarrageP: null,
-    pourcentageStock: null,
-    lachersAnneeP: null,
-    lachersAnneeC: null,
-    lachersMoisC: null,
-    lachersJourP: null,
-    lachersJourC: null,
+    nomBarrage: barrage.nomBarrage,
+    stockBarrage: null,
+    lachersAnnee: null,
+    lachersMois: null,
+    lachersJour: null,
     probs: "",
     moyPeriode: null,
-    apportsCummuleP: null,
-    apportsCummuleC: null,
+    apportsCummule: null,
     moyMois: null,
     apportMois: null,
     apportJour: null,
-    date: `${jour - 1}/${mois}`,
-    id: barrage._id,
+    date: anneeC,
+    annee: annee,
+    mois: mois,
   });
   return [form, setForm];
 }
