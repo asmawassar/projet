@@ -1,15 +1,27 @@
 import axios from "axios";
 import React, { useContext } from "react";
-import { Alert, Box, Stack, Button, Toolbar, TextField } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Checkbox,
+  Button,
+  TextField,
+  Avatar,
+  Grid,
+  CssBaseline,
+  FormControlLabel,
+  Paper,
+  Typography,
+} from "@mui/material";
 import { useNavigate, NavLink } from "react-router-dom";
 import { UserContext } from "../../action/acces";
-import { formS, stack } from "./style";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { box, imageStyle } from "./style";
 
 function LogIn() {
   const { userState } = useContext(UserContext);
   const [error, setError] = React.useState("");
   const navigate = useNavigate();
-
   const [data, setData] = React.useState({
     email: "",
     password: "",
@@ -46,38 +58,70 @@ function LogIn() {
 
   return (
     <>
-      <Toolbar />
-      <Box sx={formS}>
-        <form method="post" onSubmit={onSubmit}>
-          <Stack m={2} spacing={3} sx={stack}>
-            <h1>Connexion</h1>
-            <TextField
-              type="email"
-              label="Adresse Mail"
-              value={data.email}
-              onChange={(e) => handleChange({ email: e.target.value })}
-              required
-            />
-            <TextField
-              type="password"
-              label="Mot de passe"
-              value={data.password}
-              onChange={(e) => handleChange({ password: e.target.value })}
-              required
-            />
-            {error && <Alert severity="error">{error}</Alert>}
-            <Button variant="contained" type="submit">
-              Se connecter
-            </Button>
-            <div className="signup_link">
-              Pas Encore un Membre?{" "}
-              <NavLink className="signup" to="/SignUp">
-                Inscrivez-vous
-              </NavLink>
-            </div>
-          </Stack>
-        </form>
-      </Box>
+      <Grid container component="main" sx={{ height: "100vh" }}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} sx={imageStyle} />
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          sx={{ backgroundColor: "#EDF6E5" }}
+          elevation={20}
+        >
+          <Box sx={box}>
+            <Avatar sx={{ m: 5, bgcolor: "primary.dark" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Connecxion
+            </Typography>
+            <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                type="email"
+                label="Adresse Mail"
+                value={data.email}
+                onChange={(e) => handleChange({ email: e.target.value })}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                type="password"
+                label="Mot de passe"
+                value={data.password}
+                onChange={(e) => handleChange({ password: e.target.value })}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              {error && <Alert severity="error">{error}</Alert>}
+              <Button
+                variant="contained"
+                type="submit"
+                fullWidth
+                color="primary"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Se connecter
+              </Button>
+              <Grid container>
+                <Grid item>
+                  Pas Encore un Membre?{" "}
+                  <NavLink className="signup" to="/SignUp">
+                    Inscrivez-vous
+                  </NavLink>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
     </>
   );
 }
