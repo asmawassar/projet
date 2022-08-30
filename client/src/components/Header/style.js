@@ -1,6 +1,5 @@
 export const Bar = {
-  backgroundColor: "rgb(26, 26, 64)",
-  boxShadow: "0.1px 0.1px 10px #161D6F",
+  backgroundColor: "#242F9B",
 };
 
 export const ButtonS = {

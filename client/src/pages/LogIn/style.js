@@ -1,3 +1,11 @@
+import image from "../../images/test.jpeg";
+export const box = {
+  my: 8,
+  mx: 4,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
 export const formS = {
   width: "100%",
   display: "inline-flex",
@@ -17,4 +25,12 @@ export const row = {
   direction: "row",
   justifyContent: "space-between",
   alignItems: "center",
+};
+export const imageStyle = {
+  backgroundImage: `url(${image})`,
+  backgroundRepeat: "no-repeat",
+  backgroundColor: (t) =>
+    t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900],
+  backgroundSize: "cover",
+  backgroundPosition: "center",
 };
