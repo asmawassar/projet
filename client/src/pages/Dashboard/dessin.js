@@ -15,15 +15,12 @@ function Labels() {
 
 export function Stocks() {
   const { barrage } = useContext(UserContext);
-  const data = ChartBar(Labels(), barrage.stockBarrageC, barrage.stockBarrageP);
-  const data1 = ChartPie("pourcentageStock", barrage.pourcentageStock);
+  const data = ChartBar(Labels(), barrage.stockBarrage);
+  // const data1 = ChartPie("pourcentageStock", pourcentageStock);
   return (
     <Box style={{ display: "flex" }}>
       <Box style={bar}>
         <Bar options={options("stock du barrage")} data={data} />
-      </Box>
-      <Box style={pie}>
-        <Pie data={data1} />
       </Box>
     </Box>
   );
@@ -31,17 +28,13 @@ export function Stocks() {
 
 export function Lachers() {
   const { barrage } = useContext(UserContext);
-  const data = ChartBar(Labels(), barrage.lachersJourC, barrage.lachersJourP);
+  const data = ChartBar(Labels(), barrage.lachersJour);
   const data1 = ChartLine(
     Labels(),
     `valeur des Lachers du mois ${mois}`,
-    barrage.lachersMoisC
+    barrage.lachersMois
   );
-  const data2 = ChartLine2(
-    Labels(),
-    barrage.achersAnneeC,
-    barrage.achersAnneeP
-  );
+  const data2 = ChartLine2(Labels(), barrage.lachersAnnee);
   return (
     <>
       <Box style={{ display: "flex" }}>
@@ -64,13 +57,9 @@ export function Apports() {
   const data = ChartLine(
     Labels(),
     `valeur des Apports du mois ${mois}`,
-    barrage.apportsMoisC
+    barrage.apportMois
   );
-  const data1 = ChartLine2(
-    Labels(),
-    barrage.apportsCummuleC,
-    barrage.apportsCummuleP
-  );
+  const data1 = ChartLine2(Labels(), barrage.apportsCummule);
   return (
     <Box style={{ display: "flex" }}>
       <Box style={bar}>

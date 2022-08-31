@@ -35,7 +35,10 @@ function Barrages() {
           barrageState(u);
           handleClose();
         }
-
+        function graph() {
+          barrageState(u);
+          handleClose();
+        }
         return (
           <div key={u.nomBarrage}>
             <MenuItem>
@@ -64,6 +67,7 @@ function Barrages() {
                     update
                   </Button>
                 </MenuItem>
+                <MenuItem onClick={graph}>graph</MenuItem>
               </Menu>
             </MenuItem>
             <Divider />

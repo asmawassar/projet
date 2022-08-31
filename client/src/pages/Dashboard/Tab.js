@@ -8,13 +8,12 @@ import {
   TableCell,
   TableHead,
 } from "@mui/material";
-import { Box } from "@mui/system";
 import { UserContext } from "../../action/acces";
 import { Stocks, Lachers, Apports } from "./dessin";
 
-function Tableau() {
+function Tab() {
   const { barrage } = useContext(UserContext);
-
+  const len = barrage.probs.length;
   return (
     <>
       <Stack sx={cadre}>
@@ -25,7 +24,7 @@ function Tableau() {
       <Stack sx={cadre}>
         <h1>LACHERS</h1>
         {Lachers()}
-        <h1>(*):{barrage.probs}</h1>
+        <h1>(*):{barrage.probs[len - 1]}</h1>
       </Stack>
 
       <Stack sx={cadre}>
@@ -41,9 +40,9 @@ function Tableau() {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>{barrage.moyPeriode}</TableCell>
-              <TableCell>{barrage.moyMois}</TableCell>
-              <TableCell>{barrage.apportJour}</TableCell>
+              <TableCell>{barrage.moyPeriode[len - 1]}</TableCell>
+              <TableCell>{barrage.moyMois[len - 1]}</TableCell>
+              <TableCell>{barrage.apportJour[len - 1]}</TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -51,4 +50,4 @@ function Tableau() {
     </>
   );
 }
-export default Tableau;
+export default Tab;

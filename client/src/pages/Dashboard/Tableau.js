@@ -5,10 +5,10 @@ import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import { Stack } from "@mui/material";
 import { cadre } from "./style";
-function Tableau() {
-  const { barrage } = useContext(UserContext);
-  const [Barrage, setBarrage] = React.useState([]);
 
+function Tableau() {
+  const [Barrage, setBarrage] = React.useState([]);
+  const { barrage } = useContext(UserContext);
   async function fetchData() {
     try {
       const res = await axios({
@@ -64,7 +64,6 @@ function Tableau() {
   }
   fetchData();
   const row = rows();
-
   return (
     <>
       <Stack sx={cadre}>

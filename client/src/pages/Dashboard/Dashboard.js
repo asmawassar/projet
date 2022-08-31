@@ -1,5 +1,6 @@
 import Barrages from "./barrages";
 import Tableau from "./Tableau";
+import Tab from "./Tab";
 import { Toolbar, Box } from "@mui/material";
 import { UserContext } from "../../action/acces";
 import React, { useContext } from "react";
@@ -9,7 +10,13 @@ function Dashboard() {
   const { barrage } = useContext(UserContext);
   function test() {
     if (barrage !== "false") {
-      return <Tableau />;
+      return (
+        <>
+          {" "}
+          <Tableau />
+          <Tab />
+        </>
+      );
     }
     return <>choisir le barrage que vous voulez</>;
   }
