@@ -67,15 +67,14 @@ function Tableau() {
   return (
     <>
       <Stack sx={cadre}>
-        <h1>description generale</h1>
-        <h2> nom du Barrage: {Barrage.nomBarrage}</h2>
-        <h2> gouvernorat: {Barrage.gouvernorat}</h2>
-        <h2> date de debut des Travaux: {Barrage.dateDebutTravaux}</h2>
-        <h2> date Mise en Service: {Barrage.dateMiseService}</h2>
-        <h2> cours d'eau: {Barrage.coursEau}</h2>
-        <h2> capacite Initiale: {Barrage.capaciteInitiale}</h2>
-        <h2> capacite Utile: {Barrage.capaciteUtile}</h2>
-        <h2> description: {Barrage.description}</h2>
+        <h1>Description Générale</h1>
+        <h2>Barrage {Barrage.nomBarrage} est situé dans le gouvernorat du {Barrage.gouvernorat}.
+            Les travaux nécessaires pour la construction ont été
+            commencés en {Barrage.dateDebutTravaux}.En {Barrage.dateMiseService},
+            {Barrage.nomBarrage} a été mis en service 
+            avec une capacité initiale de {Barrage.capaciteInitiale} qui se situe
+            actuellement à une capacité de {Barrage.capaciteUtile} .Le cours d'eau du ce 
+            barrage est dirigé vers le {Barrage.coursEau}.</h2>
       </Stack>
       <Stack sx={cadre}>
         <Box sx={{ width: "100%" }}>
