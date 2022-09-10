@@ -1,5 +1,5 @@
 export const Bar = {
-  backgroundColor: "#242F9B",
+  backgroundColor: "rgb(78, 60, 73,0.7)",
 };
 
 export const ButtonS = {
@@ -34,10 +34,15 @@ export const linkA = ({ isActive }) =>
 export const linkS = {
   fontWeight: "bold",
   fontSize: "19px",
-  textTransform: "none",
+
   color: " #f3feff",
   "&:hover": {
+    fontWeight: "bold",
     color: "#03045e",
     marginTop: "-1.5px",
+  },
+  "&:active": {
+    color: "red",
+    marginTop: "1.5px",
   },
 };

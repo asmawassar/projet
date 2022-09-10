@@ -9,7 +9,6 @@ export const tableauS = {
 export const cadre = {
   margin: 5,
   border: 1,
-
   padding: "15px",
   borderColor: "black",
 };

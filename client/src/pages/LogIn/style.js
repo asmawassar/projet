@@ -1,7 +1,8 @@
-import image from "../../images/test.jpeg";
+import image from "../../images/R.jpeg";
 export const box = {
   my: 8,
   mx: 4,
+  marginTop: "-10",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -29,6 +30,20 @@ export const row = {
 export const imageStyle = {
   backgroundImage: `url(${image})`,
   backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  height: "100vh",
+  backgroundColor: (t) =>
+    t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900],
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+};
+export const imageStyle2 = {
+  backgroundImage: `url(${image})`,
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  height: "130vh",
   backgroundColor: (t) =>
     t.palette.mode === "light" ? t.palette.grey[50] : t.palette.grey[900],
   backgroundSize: "cover",

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Header from "../../components/Header/Header2";
 import React, { useContext } from "react";
 import {
   Alert,
@@ -17,6 +18,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { UserContext } from "../../action/acces";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { box, imageStyle } from "./style";
+import Footer from "../Footer";
 
 function LogIn() {
   const { userState } = useContext(UserContext);
@@ -57,17 +59,20 @@ function LogIn() {
   }
 
   return (
-    <>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+    <div style={imageStyle}>
+      <Header />
+      <Grid container component="main" justifyContent="center">
         <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} sx={imageStyle} />
         <Grid
           item
-          xs={12}
           sm={8}
           md={5}
           component={Paper}
-          sx={{ backgroundColor: "#EDF6E5" }}
+          sx={{
+            background:
+              "linear-gradient(rgb(212, 207, 198), rgb(212, 207, 198, 0.8))",
+            marginTop: "7vw",
+          }}
           elevation={20}
         >
           <Box sx={box}>
@@ -122,7 +127,7 @@ function LogIn() {
           </Box>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 }
 export default LogIn;

@@ -1,5 +1,6 @@
-import { box, imageStyle } from "../LogIn/style";
+import { box, imageStyle2 } from "../LogIn/style";
 import { NavLink } from "react-router-dom";
+import Header from "../../components/Header/Header2";
 import React, { useState } from "react";
 import axios from "axios";
 import {
@@ -62,8 +63,9 @@ function SignUp() {
       });
   }
   return (
-    <>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+    <div style={imageStyle2}>
+      <Header />
+      <Grid container component="main" justifyContent="center">
         <CssBaseline />
         <Grid
           item
@@ -71,7 +73,11 @@ function SignUp() {
           sm={8}
           md={5}
           component={Paper}
-          sx={{ backgroundColor: "#EDF6E5" }}
+          sx={{
+            background:
+              "linear-gradient(rgb(212, 207, 198), rgb(212, 207, 198, 0.8))",
+            marginTop: "7vw",
+          }}
           elevation={20}
         >
           <Box sx={box}>
@@ -183,7 +189,7 @@ function SignUp() {
                 select
                 sx={{ width: "45%" }}
                 margin="normal"
-                label="sexee"
+                label="sexe"
                 value={form.sexe}
                 onChange={(e) => updateForm({ sexe: e.target.value })}
                 required
@@ -214,18 +220,17 @@ function SignUp() {
               )}
               <Grid container>
                 <Grid item>
-                  Vous Avez un Compte?
+                  avez-vous un compte?
                   <NavLink className="login" to="/LogIn">
-                    Connectez-vous.
+                    Connectez-vous
                   </NavLink>
                 </Grid>
               </Grid>
             </Box>
           </Box>
         </Grid>
-        <Grid item xs={false} sm={4} md={7} sx={imageStyle} />
       </Grid>
-    </>
+    </div>
   );
 }
 export default SignUp;

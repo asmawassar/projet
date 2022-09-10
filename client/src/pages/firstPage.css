@@ -1,0 +1,12 @@
+@media screen and (max-width: 400px) {
+    #Apropos,
+    #Acceuil,
+    #contact{
+      width: 111%;
+    }
+  }
+  .footer{
+    width:95vw;
+    height: 8vh;
+    text-align: center;
+  }

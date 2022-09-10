@@ -1,6 +1,4 @@
-import Acceuil from "./pages/Acceuil/Acceuil";
-import Apropos from "./pages/Acceuil/Apropos";
-import Contact from "./pages/Acceuil/Contact";
+import FirstPage from "./pages/FirstPage";
 import Add from "./pages/Add/Add";
 import Change from "./pages/Change/Change";
 import LogIn from "./pages/LogIn/LogIn";
@@ -32,12 +30,9 @@ function App() {
   return (
     <UserContext.Provider value={userValue}>
       <BrowserRouter>
-        <Head />
         <Routes>
-          <Route path="/" element={<Acceuil />} />
-          <Route path="/apropos" element={<Apropos />} />
+          <Route path="/" element={<FirstPage />} />
           <Route path="/barrage" element={<Barrages />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/Add" element={<Add />} />
           <Route path="/Change" element={<Change />} />
