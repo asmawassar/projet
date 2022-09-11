@@ -26,13 +26,20 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
 function Barrages() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl1, setAnchorEl1] = React.useState(null);
+  const { userState } = useContext(UserContext);
+  const navigate = useNavigate();
 
+  function logout() {
+    userState("false");
+    navigate("/");
+  }
   const open = Boolean(anchorEl);
   const open1 = Boolean(anchorEl1);
   const handleClick = (event) => {
@@ -140,7 +147,7 @@ function Barrages() {
                   <ListItemIcon>
                     <DesktopWindowsOutlinedIcon />
                   </ListItemIcon>
-                  <ListItemText secondary=" Tableau de bord" />
+                  <ListItemText primary=" Tableau de bord" />
                 </ListItemButton>
               </ListItem>
             </AccordionSummary>
@@ -157,6 +164,16 @@ function Barrages() {
               )}
             </AccordionDetails>
           </Accordion>
+          <ListItem>
+            <ListItemButton>
+              <ListItemText primary="Profile" />
+            </ListItemButton>
+          </ListItem>{" "}
+          <ListItem>
+            <ListItemButton onclick={logout} LinkComponent={NavLink} to="/">
+              <ListItemText primary="Logout" />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       <Box
