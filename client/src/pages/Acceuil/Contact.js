@@ -110,7 +110,11 @@ function Contact() {
               {" "}
               <img src={facebook} style={icon} />
             </Link>
-            <Link href="#" target="_blank" underline="none">
+            <Link
+              href="https://www.linkedin.com/in/nour-wanis-2708bb24b/"
+              target="_blank"
+              underline="none"
+            >
               {" "}
               <img src={linkdIn} style={icon} />
             </Link>

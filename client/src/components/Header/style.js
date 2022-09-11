@@ -46,3 +46,7 @@ export const linkS = {
     marginTop: "1.5px",
   },
 };
+
+export const imageStyle = {
+  height: "11vh",
+};

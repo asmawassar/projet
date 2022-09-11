@@ -7,13 +7,13 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Profile from "./pages/profile/Profile";
 import Barrages from "./pages/barrage/barrage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Head from "./components/Header/Header";
 import { UserContext } from "./action/acces";
 import { useState, useMemo } from "react";
 function App() {
   const [user, userState] = useState("false");
   const [barrage, barrageState] = useState("false");
   const [indicateur, indicateurState] = useState("false");
+  const [page, pageState] = useState("profile");
 
   const userValue = useMemo(
     () => ({
@@ -23,8 +23,19 @@ function App() {
       barrageState,
       indicateur,
       indicateurState,
+      page,
+      pageState,
     }),
-    [user, userState, barrage, barrageState, indicateur, indicateurState]
+    [
+      user,
+      userState,
+      barrage,
+      barrageState,
+      indicateur,
+      indicateurState,
+      page,
+      pageState,
+    ]
   );
 
   return (
