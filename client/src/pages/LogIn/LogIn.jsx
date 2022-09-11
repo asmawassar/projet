@@ -18,7 +18,6 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { UserContext } from "../../action/acces";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { box, imageStyle } from "./style";
-import Footer from "../Footer";
 
 function LogIn() {
   const { userState } = useContext(UserContext);
