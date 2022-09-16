@@ -1,8 +1,9 @@
+import { AppBar } from "@mui/material";
 import "./wave.css";
 
 function Wave() {
   return (
-    <>
+    <AppBar>
       <div className="header">
         <div className="inner-header flex">
           <path
@@ -61,8 +62,7 @@ function Wave() {
           </svg>
         </div>
       </div>
-    </>
+    </AppBar>
   );
 }
-
 export default Wave;

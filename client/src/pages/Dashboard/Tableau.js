@@ -2,8 +2,19 @@ import React, { useContext } from "react";
 import { UserContext } from "../../action/acces";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
-import { Stack } from "@mui/material";
+import {
+  Stack,
+  Box,
+  Toolbar,
+  TextField,
+  CssBaseline,
+  Typography,
+  Avatar,
+  Grid,
+  Paper,
+} from "@mui/material";
 import { cadre } from "./style";
+import { box } from "../LogIn/style";
 
 function Tableau() {
   const [Barrage, setBarrage] = React.useState([]);
@@ -65,19 +76,120 @@ function Tableau() {
   const row = rows();
   return (
     <>
-      <Stack sx={cadre} style={{ marginTop: "40vh" }}>
-        <h1>Description Générale</h1>
-        <h2>
-          Barrage {Barrage.nomBarrage} est situé dans le gouvernorat du{" "}
-          {Barrage.gouvernorat}. Les travaux nécessaires pour la construction
-          ont été commencés en {Barrage.dateDebutTravaux}.En{" "}
-          {Barrage.dateMiseService},{Barrage.nomBarrage} a été mis en service
-          avec une capacité initiale de {Barrage.capaciteInitiale} qui se situe
-          actuellement à une capacité de {Barrage.capaciteUtile} .Le cours d'eau
-          du ce barrage est dirigé vers le {Barrage.coursEau}.
-        </h2>
+      <Stack
+        sx={{
+          margin: 10,
+          padding: "10px",
+          borderColor: "transparent",
+        }}
+        style={{ marginTop: "40vh" }}
+      >
+        <Grid container component="main" justifyContent="center">
+          <CssBaseline />
+          <Grid
+            item
+            component={Paper}
+            sx={{
+              background:
+                "linear-gradient(rgb(78, 60, 73,0.7), rgb(78, 60, 73, 0.1))",
+            }}
+            elevation={20}
+          >
+            <Box sx={box}>
+              <Typography sx={{ marginTop: 7 }}>
+                <h1
+                  className="font-effect-shadow-multiple"
+                  style={{ fontSize: "40px", color: "rgb(78, 60, 173)" }}
+                >
+                  Barrage {Barrage.nomBarrage}:
+                </h1>
+              </Typography>
+              <Box component="form" sx={{ mt: 1 }}>
+                <TextField
+                  margin="normal"
+                  sx={{
+                    marginLeft: "7.5%",
+                    width: "35%",
+                    mr: "15%",
+                    marginBottom: 4,
+                  }}
+                  label="Gouvernorat:"
+                  defaultValue={`${Barrage.gouvernorat}`}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+                <TextField
+                  margin="normal"
+                  sx={{ width: "35%" }}
+                  label="cours d'eau: "
+                  defaultValue={`${Barrage.coursEau}`}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />{" "}
+                <TextField
+                  margin="normal"
+                  sx={{
+                    marginLeft: "7.5%",
+                    width: "35%",
+                    mr: "15%",
+                    marginBottom: 4,
+                  }}
+                  label="Debut des Traveaux:"
+                  defaultValue={`${Barrage.dateDebutTravaux}`}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />{" "}
+                <TextField
+                  margin="normal"
+                  sx={{
+                    width: "35%",
+                  }}
+                  label="Date de mise en service: "
+                  defaultValue={`${Barrage.dateMiseService}`}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+                <TextField
+                  margin="normal"
+                  sx={{
+                    marginLeft: "7.5%",
+                    width: "35%",
+                    mr: "15%",
+                    marginBottom: 5,
+                  }}
+                  label="Capacité initiale: "
+                  defaultValue={`${Barrage.capaciteInitiale}`}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+                <TextField
+                  margin="normal"
+                  sx={{
+                    width: "35%",
+                  }}
+                  label="Capacité utile: "
+                  defaultValue={`${Barrage.capaciteUtile}`}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
       </Stack>
-      <Stack sx={cadre}>
+      <Stack
+        sx={{
+          margin: 10,
+          padding: "10px",
+          borderColor: "transparent",
+        }}
+      >
         <DataGrid
           autoHeight="true"
           rows={row}
