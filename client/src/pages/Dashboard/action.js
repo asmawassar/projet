@@ -87,7 +87,6 @@ export function ChartPie(name, value) {
     ],
   };
 }
-
 export function options(name) {
   return {
     responsive: true,

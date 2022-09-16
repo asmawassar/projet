@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Box } from "@mui/system";
 import { UserContext } from "../../action/acces";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
@@ -24,6 +23,9 @@ function Tableau() {
   }
   const col = [
     { field: "id", headerName: "id", width: 150, hide: "true" },
+    { field: "date", headerName: "date", width: 100 },
+    { field: "mois", headerName: "mois", width: 50 },
+    { field: "annee", headerName: "annee", width: 65 },
     { field: "stockBarrage", headerName: "stock du barrage", width: 150 },
     { field: "lachersAnnee", headerName: "lachersAnnee ", width: 150 },
     { field: "lachersMois", headerName: "lachersMois", width: 150 },
@@ -34,9 +36,6 @@ function Tableau() {
     { field: "moyMois", headerName: " moyMois ", width: 150 },
     { field: "apportMois", headerName: "apportMois", width: 150 },
     { field: "apportJour", headerName: "apportJour", width: 150 },
-    { field: "date", headerName: "date", width: 150 },
-    { field: "mois", headerName: "mois", width: 70 },
-    { field: "annee", headerName: "annee", width: 100 },
   ];
 
   function rows() {
@@ -45,6 +44,9 @@ function Tableau() {
     for (var i = 0; i < len; i++) {
       row.unshift({
         id: i,
+        date: barrage.date[i],
+        mois: barrage.mois[i],
+        annee: barrage.annee[i],
         stockBarrage: barrage.stockBarrage[i],
         lachersAnnee: barrage.lachersAnnee[i],
         lachersMois: barrage.lachersMois[i],
@@ -55,9 +57,6 @@ function Tableau() {
         moyMois: barrage.moyMois[i],
         apportMois: barrage.apportMois[i],
         apportJour: barrage.apportJour[i],
-        date: barrage.date[i],
-        mois: barrage.mois[i],
-        annee: barrage.annee[i],
       });
     }
     return row;
@@ -66,27 +65,27 @@ function Tableau() {
   const row = rows();
   return (
     <>
-      <Stack sx={cadre}>
+      <Stack sx={cadre} style={{ marginTop: "40vh" }}>
         <h1>Description Générale</h1>
-        <h2>Barrage {Barrage.nomBarrage} est situé dans le gouvernorat du {Barrage.gouvernorat}.
-            Les travaux nécessaires pour la construction ont été
-            commencés en {Barrage.dateDebutTravaux}.En {Barrage.dateMiseService},
-            {Barrage.nomBarrage} a été mis en service 
-            avec une capacité initiale de {Barrage.capaciteInitiale} qui se situe
-            actuellement à une capacité de {Barrage.capaciteUtile} .Le cours d'eau du ce 
-            barrage est dirigé vers le {Barrage.coursEau}.</h2>
+        <h2>
+          Barrage {Barrage.nomBarrage} est situé dans le gouvernorat du{" "}
+          {Barrage.gouvernorat}. Les travaux nécessaires pour la construction
+          ont été commencés en {Barrage.dateDebutTravaux}.En{" "}
+          {Barrage.dateMiseService},{Barrage.nomBarrage} a été mis en service
+          avec une capacité initiale de {Barrage.capaciteInitiale} qui se situe
+          actuellement à une capacité de {Barrage.capaciteUtile} .Le cours d'eau
+          du ce barrage est dirigé vers le {Barrage.coursEau}.
+        </h2>
       </Stack>
       <Stack sx={cadre}>
-        <Box sx={{ width: "100%" }}>
-          <DataGrid
-            autoHeight="true"
-            rows={row}
-            columns={col}
-            density="comfortable"
-            pageSize={7}
-            rowsPerPageOptions={[7]}
-          />
-        </Box>
+        <DataGrid
+          autoHeight="true"
+          rows={row}
+          columns={col}
+          density="comfortable"
+          pageSize={7}
+          rowsPerPageOptions={[7]}
+        />
       </Stack>
     </>
   );

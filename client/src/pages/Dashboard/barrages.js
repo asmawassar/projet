@@ -6,7 +6,6 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import {
   List,
@@ -16,7 +15,6 @@ import {
   Menu,
   ListItemText,
 } from "@mui/material";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -27,6 +25,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useNavigate } from "react-router-dom";
+import image from "../../images/barrage.png";
+import { Bar } from "../../components/Header/style";
 
 const drawerWidth = 240;
 
@@ -98,9 +98,13 @@ function Barrages() {
                   <Button>afficher</Button>
                 </MenuItem>
                 <MenuItem onClick={change}>
-                  <Button LinkComponent={NavLink} to="/Change">
-                    update
-                  </Button>
+                  {user.role === "editor" || user.role === "admin" ? (
+                    <Button LinkComponent={NavLink} to="/Change">
+                      update
+                    </Button>
+                  ) : (
+                    <></>
+                  )}
                 </MenuItem>
                 <MenuItem onClick={graph}>graph</MenuItem>
               </Menu>
@@ -118,13 +122,7 @@ function Barrages() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed">
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Tableau de bord
-          </Typography>
-        </Toolbar>
-      </AppBar>
+
       <Drawer
         sx={{
           width: drawerWidth,
@@ -133,7 +131,9 @@ function Barrages() {
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
+        <Toolbar sx={Bar}>
+          <img src={image} style={{ height: "8.5vh" }} alt="" />{" "}
+        </Toolbar>
         <Divider />
         <List>
           <Accordion>
@@ -176,12 +176,6 @@ function Barrages() {
           </ListItem>
         </List>
       </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-      >
-        <Toolbar />
-      </Box>
     </Box>
   );
 }
