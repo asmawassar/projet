@@ -77,7 +77,7 @@ function Barrages() {
         return (
           <ListItem key={u.nomBarrage}>
             <MenuItem>
-              <ListItem onClick={change}>
+              <ListItem onClick={change} style={{ width: "12vw" }}>
                 <ListItemButton>{u.nomBarrage}</ListItemButton>
               </ListItem>{" "}
               <IconButton
@@ -99,7 +99,7 @@ function Barrages() {
                     "aria-labelledby": "fade-button",
                   }}
                 >
-                  <MenuItem onClick={change}>
+                  <MenuItem>
                     <Button fullWidth LinkComponent={NavLink} to="/Change">
                       mettre à jour
                     </Button>
@@ -151,19 +151,17 @@ function Barrages() {
                 </ListItemButton>
               </ListItem>
             </AccordionSummary>
-            <AccordionDetails>
-              {Barrage}
-              <Divider />
-              {user.role === "editor" || user.role === "admin" ? (
-                <Button fullWidth LinkComponent={NavLink} to="/Add">
-                  ajouter un barrage
-                  <Divider />
-                </Button>
-              ) : (
-                <></>
-              )}
-            </AccordionDetails>
+            <AccordionDetails>{Barrage}</AccordionDetails>
           </Accordion>
+          <ListItem>
+            {user.role === "editor" || user.role === "admin" ? (
+              <Button fullWidth LinkComponent={NavLink} to="/Add">
+                <ListItemText primary=" ajouter un barrage" />
+              </Button>
+            ) : (
+              <></>
+            )}
+          </ListItem>
           <ListItem>
             <Button fullWidth LinkComponent={NavLink} to="/profile">
               <ListItemText primary="Profile" />

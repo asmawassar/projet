@@ -29,3 +29,7 @@ export const wallpaper = {
   backgroundRepeat: "no-repeat",
   width: "100vw",
 };
+
+export const barrage = {
+  width: "10px",
+};
