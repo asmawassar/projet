@@ -51,7 +51,7 @@ function Profile() {
               <TextField
                 margin="normal"
                 sx={{ width: "45%" }}
-                label="Prenom:"
+                label="Prénom:"
                 defaultValue={`${user.firstName.toUpperCase()}`}
                 InputProps={{
                   readOnly: true,
@@ -60,7 +60,7 @@ function Profile() {
               <TextField
                 margin="normal"
                 sx={{ width: "45%", mr: "10%" }}
-                label="Date de naissance: "
+                label="Date De Naissance: "
                 defaultValue={`${user.birthDate}`}
                 InputProps={{
                   readOnly: true,
@@ -78,7 +78,7 @@ function Profile() {
               <TextField
                 margin="normal"
                 fullWidth
-                label="Email: "
+                label="Adresse Mail: "
                 defaultValue={`${user.email}`}
                 InputProps={{
                   readOnly: true,
@@ -87,7 +87,7 @@ function Profile() {
               <TextField
                 margin="normal"
                 sx={{ width: "45%", mr: "10%" }}
-                label="Role: "
+                label="Rôle: "
                 defaultValue={`${user.role}`}
                 InputProps={{
                   readOnly: true,
@@ -114,7 +114,7 @@ function Profile() {
               <TextField
                 margin="normal"
                 sx={{ width: "45%" }}
-                label="Numéro tel: "
+                label="Numéro Tel: "
                 defaultValue={`${user.tel}`}
                 InputProps={{
                   readOnly: true,
@@ -123,7 +123,7 @@ function Profile() {
               <TextField
                 margin="normal"
                 fullWidth
-                label="entreprise: "
+                label="Entreprise: "
                 defaultValue={`${user.entreprise}`}
                 InputProps={{
                   readOnly: true,

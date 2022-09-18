@@ -52,7 +52,7 @@ function Change() {
             Bienvenue {Gender()} {user.lastName.toUpperCase()}{" "}
             {user.firstName.toUpperCase()}
           </h2>
-          <h3>update barrage {barrage.nomBarrage} :</h3>
+          <h3>Update Barrage {barrage.nomBarrage} :</h3>
           <h5>Ces Données sont observées à 7h {anneeC}</h5>
           <fieldset className="f2">
             <legend>Stocks Aux Barrages</legend>
@@ -150,11 +150,11 @@ function Change() {
               sx={buttonS}
               endIcon={<SendIcon />}
             >
-              update
+              Mettre à jour
             </Button>
           </Box>
           <div>
-            Si Vous Voulez Ajouter un autre indicateur,{"   "}
+            Si Vous Voulez Ajouter un autre barrage,{"   "}
             <NavLink className="ajouter" to="/Add">
               Cliquer ici
             </NavLink>

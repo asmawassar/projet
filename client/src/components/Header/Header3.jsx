@@ -30,7 +30,7 @@ function Header3() {
         </Stack>
         <Stack spacing={1} direction="row">
           <Button LinkComponent={NavLink} sx={ButtonS} to="/">
-            Logout
+            Deconnexion
           </Button>
         </Stack>
       </Toolbar>

@@ -13,7 +13,7 @@ function Contact() {
     <Box id="Contact">
       <Toolbar />
       <Typography align="center">
-        <h1>Meet the team</h1>
+        <h1>Meet The Team</h1>
         <Box
           style={{
             display: "flex",

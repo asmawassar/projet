@@ -107,7 +107,7 @@ function Tableau() {
                   focused
                   margin="normal"
                   sx={{ width: "35%" }}
-                  label="cours d'eau: "
+                  label="Cours D'eau: "
                   value={`${indicateur.coursEau}`}
                   InputProps={{
                     readOnly: true,
@@ -123,7 +123,7 @@ function Tableau() {
                     mr: "15%",
                     marginBottom: 4,
                   }}
-                  label="Debut des Traveaux:"
+                  label="Date Du Debut Des Travaux:"
                   value={`${indicateur.dateDebutTravaux}`}
                   InputProps={{
                     readOnly: true,
@@ -136,7 +136,7 @@ function Tableau() {
                   sx={{
                     width: "35%",
                   }}
-                  label="Date de mise en service: "
+                  label="Date De La Mise En Service: "
                   value={`${indicateur.dateMiseService}`}
                   InputProps={{
                     readOnly: true,
@@ -152,7 +152,7 @@ function Tableau() {
                     mr: "15%",
                     marginBottom: 5,
                   }}
-                  label="Capacité initiale: "
+                  label="Capacité Initiale: "
                   value={`${indicateur.capaciteInitiale}`}
                   InputProps={{
                     readOnly: true,
@@ -165,7 +165,7 @@ function Tableau() {
                   sx={{
                     width: "35%",
                   }}
-                  label="Capacité utile: "
+                  label="Capacité Utile: "
                   value={`${indicateur.capaciteUtile}`}
                   InputProps={{
                     readOnly: true,

@@ -23,7 +23,7 @@ function Header() {
         </Stack>
         <Stack spacing={1} direction="row">
           <Button LinkComponent={NavLink} sx={ButtonS} to="/login">
-            login/signup
+            Connexion/Inscription
           </Button>
         </Stack>
       </Toolbar>

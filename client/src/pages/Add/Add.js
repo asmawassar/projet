@@ -52,18 +52,18 @@ function Add() {
           </h3>
           <TextField
             type="text"
-            label="nom du barrage"
+            label="Nom Du Barrage"
             value={form.nomBarrage}
             onChange={(e) => updateForm({ nomBarrage: e.target.value })}
             required
           />
           <Stack>
             <fieldset className="f2">
-              <legend>informations générales</legend>
+              <legend>Informations Générales</legend>
               <Stack m={2} spacing={3} sx={field}>
                 <TextField
                   type="text"
-                  label="gouvernorat"
+                  label="Gouvernorat"
                   value={form.gouvernorat}
                   onChange={(e) => updateForm({ gouvernorat: e.target.value })}
                   required
@@ -72,7 +72,7 @@ function Add() {
               <Stack m={2} spacing={3} sx={field}>
                 <TextField
                   type="text"
-                  label="capacité initiale"
+                  label="Capacité Initiale"
                   value={form.capaciteInitiale}
                   onChange={(e) =>
                     updateForm({ capaciteInitiale: e.target.value })
@@ -81,7 +81,7 @@ function Add() {
                 />
                 <TextField
                   type="text"
-                  label="capacité utile"
+                  label="Capacité Utile"
                   required
                   value={form.capaciteUtile}
                   onChange={(e) =>
@@ -90,14 +90,14 @@ function Add() {
                 />
                 <TextField
                   type="text"
-                  label="cours d'eau"
+                  label="Cours D'eau"
                   required
                   value={form.coursEau}
                   onChange={(e) => updateForm({ coursEau: e.target.value })}
                 />
                 <TextField
                   type="text"
-                  label="date debut traveaux"
+                  label="Date Du Début Des Travaux"
                   required
                   value={form.dateDebutTravaux}
                   onChange={(e) =>
@@ -108,7 +108,7 @@ function Add() {
               <Stack m={2} spacing={3} sx={field}>
                 <TextField
                   type="text"
-                  label=" date fin traveaux "
+                  label=" Date De La Fin Des Travaux "
                   required
                   value={form.dateMiseService}
                   onChange={(e) =>

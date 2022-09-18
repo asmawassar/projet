@@ -16,7 +16,7 @@ function Acceuil() {
           site web
         </h1>
         <h2 className="font-effect-outline" style={{ marginTop: "-90px" }}>
-          Priere de vous connecter pour pouvoir acceder au tableau de bord
+          Prière de vous connecter pour pouvoir accéder au tableau de bord
         </h2>
       </Typography>
     </div>

@@ -60,14 +60,14 @@ function Add() {
           <Stack {...row}>
             <TextField
               type="text"
-              label="nom du barrage"
+              label="Nom Du Barrage"
               value={form.nomBarrage}
               onChange={(e) => updateForm({ nomBarrage: e.target.value })}
               required
             />
             <TextField
               type="text"
-              label="gouvernorat"
+              label="Gouvernorat"
               value={form.gouvernorat}
               onChange={(e) => updateForm({ gouvernorat: e.target.value })}
               required
@@ -76,14 +76,14 @@ function Add() {
           <Stack {...row}>
             <TextField
               type="text"
-              label="capacité initiale"
+              label="Capacité Initiale"
               value={form.capaciteInitiale}
               onChange={(e) => updateForm({ capaciteInitiale: e.target.value })}
               required
             />
             <TextField
               type="text"
-              label="capacité Utile"
+              label="Capacité Utile"
               required
               value={form.capaciteUtile}
               onChange={(e) => updateForm({ capaciteUtile: e.target.value })}
@@ -92,14 +92,14 @@ function Add() {
           <Stack {...row}>
             <TextField
               type="text"
-              label="cours d'eau"
+              label="Cours D'eau"
               required
               value={form.coursEau}
               onChange={(e) => updateForm({ coursEau: e.target.value })}
             />
             <TextField
               type="text"
-              label="date de debut de traveaux"
+              label="Date Du Début Des Travaux"
               value={form.dateDebutTravaux}
               onChange={(e) => updateForm({ dateDebutTravaux: e.target.value })}
             />
@@ -107,14 +107,14 @@ function Add() {
           <Stack {...row}>
             <TextField
               type="text"
-              label="date mise en service"
+              label="Date De La Mise En Service"
               required
               value={form.dateMiseService}
               onChange={(e) => updateForm({ dateMiseService: e.target.value })}
             />
             <TextField
               type="text"
-              label="description"
+              label="Description"
               value={form.description}
               onChange={(e) => updateForm({ description: e.target.value })}
             />
