@@ -37,26 +37,26 @@ export const signUp = async (req, res) => {
       !email ||
       !password
     )
-      return res.status(400).json({ message: "Please fill in all fields." });
+      return res.status(400).json({ message: "Merci de remplir tous les champs." });
 
     if (!validateEmail(email))
-      return res.status(400).json({ message: "Invalid email." });
+      return res.status(400).json({ message: "Adresse Mail invalide" });
 
     const user = await Users.findOne({ email: req.body.email });
     if (user)
-      return res.status(400).json({ message: "this email already exists." });
+      return res.status(400).json({ message: "Cette Adresse Mail existe déjà." });
 
     if (password.length < 6)
       return res
         .status(400)
-        .json({ message: "Password must be at least 6 characters." });
+        .json({ message: "Le Mot De Passe doit être au moins de 6 caractères." });
 
     const salt = await bcrypt.genSalt(Number(10));
     const hashPass = await bcrypt.hash(req.body.password, salt);
 
     await new Users({ ...req.body, password: hashPass }).save();
 
-    res.status(201).json({ message: "Account has been activated!" });
+    res.status(201).json({ message: "Le compte a été activé !" });
   } catch (err) {
     console.log(err.message);
     return res.status(500).json({ message: err.message });
@@ -68,13 +68,13 @@ export const logIn = async (req, res) => {
     const { email, password } = req.body;
     const user = await Users.findOne({ email });
     if (!validateEmail(email))
-      return res.status(400).json({ message: "Invalid email." });
+      return res.status(400).json({ message: "Adresse Mail invalide" });
     if (!user)
-      return res.status(400).json({ message: "This email does not exist." });
+      return res.status(400).json({ message: "Cette Adresse Mail n'existe pas." });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res.status(400).json({ message: "Password is incorrect." });
+      return res.status(400).json({ message: "Le mot de passe est incorrect." });
     res.json({ user });
   } catch (err) {
     return res.status(500).json({ message: err.message });
