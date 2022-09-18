@@ -90,27 +90,24 @@ function Barrages() {
               >
                 <MoreVertIcon />
               </IconButton>
-              <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  "aria-labelledby": "fade-button",
-                }}
-              >
-                <MenuItem>
-                  <Button>afficher</Button>
-                </MenuItem>
-                {user.role === "editor" || user.role === "admin" ? (
+              {user.role === "editor" || user.role === "admin" ? (
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "fade-button",
+                  }}
+                >
                   <MenuItem onClick={change}>
                     <Button fullWidth LinkComponent={NavLink} to="/Change">
                       mettre à jour
                     </Button>
                   </MenuItem>
-                ) : (
-                  <></>
-                )}
-              </Menu>
+                </Menu>
+              ) : (
+                <></>
+              )}
             </MenuItem>
             <Divider />
           </ListItem>

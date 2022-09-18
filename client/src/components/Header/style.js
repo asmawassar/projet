@@ -48,5 +48,5 @@ export const linkS = {
 };
 
 export const imageStyle = {
-  height: "11vh",
+  height: "10vh",
 };
