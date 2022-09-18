@@ -79,7 +79,7 @@ function LogIn() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Connecxion
+              Connexion
             </Typography>
             <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 1 }}>
               <TextField

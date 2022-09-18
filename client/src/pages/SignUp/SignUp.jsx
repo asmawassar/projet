@@ -121,7 +121,7 @@ function SignUp() {
                 type="text"
                 sx={{ width: "45%", mr: "10%" }}
                 margin="normal"
-                label="gouvernorat"
+                label="Gouvernorat"
                 value={form.gouvernorat}
                 onChange={(e) => updateForm({ gouvernorat: e.target.value })}
                 required
@@ -130,7 +130,7 @@ function SignUp() {
                 margin="normal"
                 sx={{ width: "45%" }}
                 type="text"
-                label="entreprise"
+                label="Entreprise"
                 value={form.entreprise}
                 onChange={(e) => updateForm({ entreprise: e.target.value })}
                 required
@@ -140,7 +140,7 @@ function SignUp() {
                 sx={{ width: "45%", mr: "10%" }}
                 margin="normal"
                 type="text"
-                label="occupation"
+                label="Occupation"
                 value={form.occupation}
                 onChange={(e) => updateForm({ occupation: e.target.value })}
                 required
@@ -149,7 +149,7 @@ function SignUp() {
                 sx={{ width: "45%" }}
                 margin="normal"
                 type="text"
-                label="numero de tel"
+                label="Numéro Tel"
                 value={form.tel}
                 onChange={(e) => updateForm({ tel: e.target.value })}
                 required
@@ -159,7 +159,7 @@ function SignUp() {
                 sx={{ width: "45%", mr: "10%" }}
                 margin="normal"
                 type="password"
-                label="Mot de passe"
+                label="Mot De Passe"
                 value={form.password}
                 onChange={(e) => updateForm({ password: e.target.value })}
                 required
@@ -168,7 +168,7 @@ function SignUp() {
                 sx={{ width: "45%" }}
                 margin="normal"
                 type="password"
-                label="Confirmer mot de passe"
+                label="Confirmer Mot De Passe"
                 value={form.passwordCheck}
                 onChange={(e) => updateForm({ passwordCheck: e.target.value })}
                 required
@@ -178,7 +178,7 @@ function SignUp() {
                 sx={{ width: "45%", mr: "10%" }}
                 margin="normal"
                 type="date"
-                label="date"
+                label="Date De Naissance"
                 InputLabelProps={{ shrink: true }}
                 value={form.naissance}
                 onChange={(e) => updateForm({ naissance: e.target.value })}
@@ -189,7 +189,7 @@ function SignUp() {
                 select
                 sx={{ width: "45%" }}
                 margin="normal"
-                label="sexe"
+                label="Sexe"
                 value={form.sexe}
                 onChange={(e) => updateForm({ sexe: e.target.value })}
                 required
@@ -220,7 +220,7 @@ function SignUp() {
               )}
               <Grid container>
                 <Grid item>
-                  avez-vous un compte?
+                  Avez-vous un compte?
                   <NavLink className="login" to="/LogIn">
                     Connectez-vous
                   </NavLink>

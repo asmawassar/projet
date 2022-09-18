@@ -102,9 +102,9 @@ function Barrages() {
                   <Button>afficher</Button>
                 </MenuItem>
                 {user.role === "editor" || user.role === "admin" ? (
-                  <MenuItem>
-                    <Button LinkComponent={NavLink} to="/Change">
-                      update
+                  <MenuItem onClick={change}>
+                    <Button fullWidth LinkComponent={NavLink} to="/Change">
+                      mettre à jour
                     </Button>
                   </MenuItem>
                 ) : (
@@ -189,7 +189,7 @@ function Barrages() {
               LinkComponent={NavLink}
               to="/"
             >
-              <ListItemText primary="Logout" />
+              <ListItemText primary="Deconnexion" />
             </Button>
           </ListItem>
         </List>

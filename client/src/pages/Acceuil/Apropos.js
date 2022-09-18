@@ -17,25 +17,25 @@ function Apropos() {
             <img src={image} style={imageStyle2} />
           </Box>
           <Box style={right}>
-            <h1>qui somme nous?</h1>
+            <h1>Qui Sommes-Nous?</h1>
             <p>
-              BarrageService est un site web creé par des etudiants de l'école
-              Nationale des sciences de l'informatique au cadre d'un stage
+              BarrageService est un site web créé par des etudiants de l'Ecole
+              Nationale Des Sciences De l'Informatique au cadre d'un stage
               d'été.
             </p>
-            <h1>notre mission</h1>
+            <h1>Notre Mission</h1>
             <p>
-              Les buts de la creation de ce site est les suivants: <br />
+              Les buts de la création de ce site sont : <br />
               <ul>
                 <li>
-                  Mettre en place un systeme d'information fiable permettant
-                  d'analyser la situation des barrages à travers des indicateurs
+                  Mettre en place un système d'information fiable permettant
+                  d'analyser la situation des barrages à travers des indicateurs.
                 </li>
                 <li>
                   Collecter les informations et les données nationales liés aux
-                  barrages tunisiens
+                  barrages tunisiens.
                 </li>
-                <li>Sauvgarder les informations de tous les anneés donneés</li>
+                <li>Sauvgarder les informations de tous les années données.</li>
               </ul>
             </p>
           </Box>

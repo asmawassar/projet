@@ -84,11 +84,12 @@ function Admin() {
     { field: "id", headerName: "ID", width: 40 },
     { field: "nom", headerName: "Nom ", width: 130 },
     { field: "prenom", headerName: "Prénom", width: 145 },
-    { field: "sex", headerName: "sexe", width: 70 },
-    { field: "birthdate", headerName: "birthdate", width: 95 },
-    { field: "email", headerName: "Email", width: 285 },
+    { field: "sex", headerName: "Sexe", width: 70 },
+    { field: "birthdate", headerName: "Date De Naissance", width: 140 },
+    { field: "email", headerName: "Adresse Mail", width: 285 },
     {
       field: "role",
+      headerName: "Rôle", width: 100,
       renderCell: (u) => {
         return (
           <NativeSelect
@@ -97,19 +98,20 @@ function Admin() {
               updateRole({ role: e.target.value, id: u.row._id });
             }}
           >
-            <option value="user">user</option>
-            <option value="editor">editor</option>
-            <option value="admin"> admin</option>
+            <option value="user">Utilisateur</option>
+            <option value="editor">Editeur</option>
+            <option value="admin">Admin</option>
           </NativeSelect>
         );
       },
     },
     {
       field: "save",
+      headerName: "Enregistrement", width: 130,
       renderCell: () => {
         return (
           <div>
-            <Button onClick={onSubmit}>save</Button>
+            <Button onClick={onSubmit}>Enregistrer</Button>
           </div>
         );
       },
@@ -130,13 +132,13 @@ function Admin() {
             disableSelectionOnClick="true"
           />
         ) : (
-          <Button onClick={fetchData}>afficher users infos</Button>
+          <Button onClick={fetchData}>afficher les informations des utilisateurs</Button>
         )}
 
         <Stack spacing={2} sx={{ width: "100%" }}>
           <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
             <Alert onClose={handleClose} variant="filled" severity="success">
-              changes saved!
+              Changements Enregistrés!
             </Alert>
           </Snackbar>
           <Snackbar
@@ -145,7 +147,7 @@ function Admin() {
             onClose={handleClose}
           >
             <Alert onClose={handleClose} variant="filled" severity="error">
-              you did not make changes
+             Vous n'avez pas fait de modifications!
             </Alert>
           </Snackbar>
         </Stack>
