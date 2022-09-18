@@ -75,10 +75,10 @@ function Barrages() {
           handleClose();
         }
         return (
-          <ListItem fullWidth key={u.nomBarrage}>
+          <ListItem key={u.nomBarrage}>
             <MenuItem>
-              <ListItem fullWidth onClick={change}>
-                <ListItemButton fullWidth>{u.nomBarrage}</ListItemButton>
+              <ListItem onClick={change}>
+                <ListItemButton>{u.nomBarrage}</ListItemButton>
               </ListItem>{" "}
               <IconButton
                 aria-label="more"
@@ -98,18 +98,18 @@ function Barrages() {
                   "aria-labelledby": "fade-button",
                 }}
               >
-                <MenuItem onClick={change}>
-                  <Button fullWidth>afficher</Button>
+                <MenuItem>
+                  <Button>afficher</Button>
                 </MenuItem>
-                <MenuItem onClick={change}>
-                  {user.role === "editor" || user.role === "admin" ? (
-                    <Button fullWidth LinkComponent={NavLink} to="/Change">
+                {user.role === "editor" || user.role === "admin" ? (
+                  <MenuItem>
+                    <Button LinkComponent={NavLink} to="/Change">
                       update
                     </Button>
-                  ) : (
-                    <></>
-                  )}
-                </MenuItem>
+                  </MenuItem>
+                ) : (
+                  <></>
+                )}
               </Menu>
             </MenuItem>
             <Divider />
