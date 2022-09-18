@@ -1,12 +1,22 @@
-import { TextField, Toolbar, Alert, Box, Stack, Button } from "@mui/material";
+import {
+  TextField,
+  Grid,
+  Alert,
+  Box,
+  Paper,
+  Typography,
+  Button,
+  CssBaseline,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { UserContext } from "../../action/acces";
 import Header from "../../components/Header/Header3";
 import axios from "axios";
-import { Gender, Form } from "./actions";
-import { formS, box, stack, field, buttonS } from "../Change/style";
 
+import { Gender, Form } from "./actions";
+import { formS, box, buttonS } from "../Change/style";
+import { wallpaper } from "../Dashboard/style";
 function Add() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
@@ -37,40 +47,65 @@ function Add() {
   }
 
   return (
-    <Box className="container">
+    <Box className="container" style={wallpaper}>
       <Header />
-      <Toolbar />
-
-      <form className="formA" method="post" onSubmit={onSubmit} style={formS}>
-        <Stack m={2} spacing={3} sx={stack}>
-          <h2>
-            Bienvenue {Gender()} {user.lastName} {user.firstName}
-          </h2>
-          <h3>
-            Veuillez remplir les cases suivantes avec les valeurs
-            correspondantes :
-          </h3>
-          <TextField
-            type="text"
-            label="Nom Du Barrage"
-            value={form.nomBarrage}
-            onChange={(e) => updateForm({ nomBarrage: e.target.value })}
-            required
-          />
-          <Stack>
-            <fieldset className="f2">
-              <legend>Informations Générales</legend>
-              <Stack m={2} spacing={3} sx={field}>
+      <Grid container component="main" sx={{ width: "2000px" }}>
+        <CssBaseline />
+        <Grid
+          item
+          sm={8}
+          md={5}
+          component={Paper}
+          sx={{
+            background:
+              "linear-gradient(rgb(212, 207, 198), rgb(212, 207, 198, 0.8))",
+            marginTop: "15vh",
+            marginBottom: "5vh",
+          }}
+          elevation={20}
+        >
+          <Box sx={box}>
+            <Typography sx={{ color: "purple", fontSize: "18.5px" }}>
+              <h2>
+                <i>
+                  Bienvenue {Gender()} {user.lastName.toUpperCase()}{" "}
+                  {user.firstName.toUpperCase()} :
+                </i>
+              </h2>
+            </Typography>
+            <Box component="form" sx={{ mt: 1 }} noValidate onSubmit={onSubmit}>
+              <TextField
+                margin="normal"
+                sx={{ width: "70%", ml: "15%", mb: 5 }}
+                type="text"
+                label="Nom Du Barrage"
+                value={form.nomBarrage}
+                onChange={(e) => updateForm({ nomBarrage: e.target.value })}
+                required
+              />{" "}
+              <fieldset className="f2">
+                <legend>Informations Générales</legend>
                 <TextField
+                  margin="normal"
+                  sx={{ width: "45%", mr: "10%", mt: 3 }}
                   type="text"
                   label="Gouvernorat"
                   value={form.gouvernorat}
                   onChange={(e) => updateForm({ gouvernorat: e.target.value })}
                   required
                 />
-              </Stack>
-              <Stack m={2} spacing={3} sx={field}>
                 <TextField
+                  margin="normal"
+                  sx={{ width: "45%", mt: 3 }}
+                  type="text"
+                  label="Cours D'eau"
+                  required
+                  value={form.coursEau}
+                  onChange={(e) => updateForm({ coursEau: e.target.value })}
+                />
+                <TextField
+                  margin="normal"
+                  sx={{ width: "45%", mr: "10%", mt: 3 }}
                   type="text"
                   label="Capacité Initiale"
                   value={form.capaciteInitiale}
@@ -80,6 +115,8 @@ function Add() {
                   required
                 />
                 <TextField
+                  margin="normal"
+                  sx={{ width: "45%", mt: 3 }}
                   type="text"
                   label="Capacité Utile"
                   required
@@ -88,14 +125,10 @@ function Add() {
                     updateForm({ capaciteUtile: e.target.value })
                   }
                 />
+
                 <TextField
-                  type="text"
-                  label="Cours D'eau"
-                  required
-                  value={form.coursEau}
-                  onChange={(e) => updateForm({ coursEau: e.target.value })}
-                />
-                <TextField
+                  margin="normal"
+                  sx={{ width: "45%", mr: "10%", mt: 3 }}
                   type="text"
                   label="Date Du Début Des Travaux"
                   required
@@ -104,9 +137,10 @@ function Add() {
                     updateForm({ dateDebutTravaux: e.target.value })
                   }
                 />
-              </Stack>
-              <Stack m={2} spacing={3} sx={field}>
+
                 <TextField
+                  margin="normal"
+                  sx={{ width: "45%", mt: 3, mb: 3 }}
                   type="text"
                   label=" Date De La Fin Des Travaux "
                   required
@@ -115,17 +149,19 @@ function Add() {
                     updateForm({ dateMiseService: e.target.value })
                   }
                 />
-              </Stack>
-            </fieldset>
-            <Box style={box}>
-              {error && <Alert severity="error">{error}</Alert>}
-              <Button variant="contained" type="submit" sx={buttonS}>
-                Ajouter
-              </Button>
+              </fieldset>
+              <Box style={box}>
+                <center>
+                  {error && <Alert severity="error">{error}</Alert>}
+                  <Button variant="contained" type="submit" sx={buttonS}>
+                    Ajouter
+                  </Button>
+                </center>
+              </Box>
             </Box>
-          </Stack>
-        </Stack>
-      </form>
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

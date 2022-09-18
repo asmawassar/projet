@@ -6,8 +6,8 @@ export const formS = {
 };
 
 export const stack = {
+  backgroundColor: "rgb(120, 100,100,0.8)",
   width: "50%",
-  border: 2,
   borderRadius: 1,
   padding: "15px",
   borderColor: "#023e8a",
@@ -21,13 +21,16 @@ export const field = {
 };
 
 export const box = {
-  marginLeft: "35%",
-  marginTop: 20,
-  marginBottom: 15,
+  marginLeft: 10,
+  marginRight: 10,
+  marginTop: 5,
+  marginBottom: 5,
 };
 
 export const buttonS = {
-  width: "30%",
+  width: "35%",
+  marginTop: 5,
+  marginBottom: 2,
   fontSize: "17px",
   color: "white",
   borderRadius: 1,

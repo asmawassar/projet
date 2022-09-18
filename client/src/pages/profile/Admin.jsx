@@ -5,12 +5,12 @@ import {
   NativeSelect,
   Stack,
   Snackbar,
-  Toolbar,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import Header from "../../components/Header/Header3";
+import "./style.css";
 function Admin() {
   const [Users, setUsers] = React.useState([]);
   const [role, setRole] = React.useState({ role: "", id: "" });
@@ -89,7 +89,8 @@ function Admin() {
     { field: "email", headerName: "Adresse Mail", width: 285 },
     {
       field: "role",
-      headerName: "Rôle", width: 100,
+      headerName: "Rôle",
+      width: 100,
       renderCell: (u) => {
         return (
           <NativeSelect
@@ -107,7 +108,8 @@ function Admin() {
     },
     {
       field: "save",
-      headerName: "Enregistrement", width: 130,
+      headerName: "Enregistrement",
+      width: 130,
       renderCell: () => {
         return (
           <div>
@@ -117,41 +119,62 @@ function Admin() {
       },
     },
   ];
+  useEffect(() => {
+    fetchData();
+  });
 
   return (
     <>
-      <Toolbar>
-        <Header />
-      </Toolbar>
-      <Box sx={{ height: 600, width: "100%" }}>
-        {affiche ? (
+      <Header />
+      <div class="context">
+        <Box
+          sx={{
+            height: 600,
+            width: "80%",
+            marginTop: "-35vh",
+            marginLeft: "10%",
+            background:
+              "linear-gradient(rgb(212, 207, 198), rgb(212, 207, 198, 0.8))",
+          }}
+        >
           <DataGrid
             rows={Users}
             columns={post}
             rowsPerPageOptions={[10, 20, 50, 100]}
             disableSelectionOnClick="true"
           />
-        ) : (
-          <Button onClick={fetchData}>afficher les informations des utilisateurs</Button>
-        )}
-
-        <Stack spacing={2} sx={{ width: "100%" }}>
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-            <Alert onClose={handleClose} variant="filled" severity="success">
-              Changements Enregistrés!
-            </Alert>
-          </Snackbar>
-          <Snackbar
-            open={warning}
-            autoHideDuration={3000}
-            onClose={handleClose}
-          >
-            <Alert onClose={handleClose} variant="filled" severity="error">
-             Vous n'avez pas fait de modifications!
-            </Alert>
-          </Snackbar>
-        </Stack>
-      </Box>
+          <Stack spacing={2} sx={{ width: "100%" }}>
+            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+              <Alert onClose={handleClose} variant="filled" severity="success">
+                Changements Enregistrés!
+              </Alert>
+            </Snackbar>
+            <Snackbar
+              open={warning}
+              autoHideDuration={3000}
+              onClose={handleClose}
+            >
+              <Alert onClose={handleClose} variant="filled" severity="error">
+                Vous n'avez pas fait de modifications!
+              </Alert>
+            </Snackbar>
+          </Stack>
+        </Box>
+      </div>{" "}
+      <div class="area2">
+        <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </>
   );
 }

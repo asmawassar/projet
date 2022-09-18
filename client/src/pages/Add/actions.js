@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 
 export const jour = new Date().getDate();
 export const mois = new Date().getMonth() + 1;
-const annee = new Date().getFullYear();
+export const annee = new Date().getFullYear();
 export const anneeP = `${jour}/${mois}/${annee - 1}`;
 export const anneeC = `${jour}/${mois}/${annee}`;
 export const jourEtAnneP = `${jour - 1}/${mois}/${annee - 1}`;
