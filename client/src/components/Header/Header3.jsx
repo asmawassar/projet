@@ -1,9 +1,13 @@
-import { AppBar, Stack, Button, Link, Toolbar } from "@mui/material";
+import { AppBar, Stack, Button, Toolbar } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { Bar, ButtonS, linkS } from "./style";
+import React, { useContext } from "react";
+import { Bar, ButtonS } from "./style";
 import image from "../../images/barrage.png";
+import { UserContext } from "../../action/acces";
 import { imageStyle } from "./style";
 function Header3() {
+  const { user } = useContext(UserContext);
+
   return (
     <AppBar sx={Bar}>
       <Toolbar>
@@ -12,9 +16,13 @@ function Header3() {
           <Button LinkComponent={NavLink} sx={ButtonS} to="/profile">
             Profile
           </Button>
-          <Button LinkComponent={NavLink} sx={ButtonS} to="/admin">
-            admin
-          </Button>
+          {user.role === "admin" ? (
+            <Button LinkComponent={NavLink} sx={ButtonS} to="/admin">
+              admin
+            </Button>
+          ) : (
+            <></>
+          )}
 
           <Button LinkComponent={NavLink} sx={ButtonS} to="/Dashboard">
             Tableau de board

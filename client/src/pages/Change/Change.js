@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { UserContext } from "../../action/acces";
 import axios from "axios";
+import Header from "../../components/Header/Header3";
 import { formS, box, stack, field, buttonS } from "./style";
 import SendIcon from "@mui/icons-material/Send";
 import {
@@ -43,12 +44,16 @@ function Change() {
 
   return (
     <Box className="container">
+      <Header />
       <Toolbar />
-      <h1>Bienvenue {Gender()}</h1>
-      <h3>update barrage {barrage.nomBarrage} :</h3>
-      <h5>Ces Données sont observées à 7h {anneeC}</h5>
       <form className="formA" method="post" onSubmit={onSubmit} style={formS}>
         <Stack m={2} spacing={3} sx={stack} value="true">
+          <h2>
+            Bienvenue {Gender()} {user.lastName.toUpperCase()}{" "}
+            {user.firstName.toUpperCase()}
+          </h2>
+          <h3>update barrage {barrage.nomBarrage} :</h3>
+          <h5>Ces Données sont observées à 7h {anneeC}</h5>
           <fieldset className="f2">
             <legend>Stocks Aux Barrages</legend>
             <Stack m={2} spacing={3} sx={field}>

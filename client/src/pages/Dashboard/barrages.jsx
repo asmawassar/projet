@@ -34,12 +34,7 @@ function Barrages() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { userState, pageState } = useContext(UserContext);
   const navigate = useNavigate();
-  function admin() {
-    pageState("admin");
-  }
-  function profile() {
-    pageState("profile");
-  }
+
   function logout() {
     userState("false");
     navigate("/");
@@ -79,15 +74,11 @@ function Barrages() {
           pageState("tableau");
           handleClose();
         }
-        function graph() {
-          barrageState(u);
-          handleClose();
-        }
         return (
-          <ListItem key={u.nomBarrage}>
+          <ListItem fullWidth key={u.nomBarrage}>
             <MenuItem>
-              <ListItem onClick={change}>
-                <ListItemButton>{u.nomBarrage}</ListItemButton>
+              <ListItem fullWidth onClick={change}>
+                <ListItemButton fullWidth>{u.nomBarrage}</ListItemButton>
               </ListItem>{" "}
               <IconButton
                 aria-label="more"
@@ -108,18 +99,17 @@ function Barrages() {
                 }}
               >
                 <MenuItem onClick={change}>
-                  <Button>afficher</Button>
+                  <Button fullWidth>afficher</Button>
                 </MenuItem>
                 <MenuItem onClick={change}>
                   {user.role === "editor" || user.role === "admin" ? (
-                    <Button LinkComponent={NavLink} to="/Change">
+                    <Button fullWidth LinkComponent={NavLink} to="/Change">
                       update
                     </Button>
                   ) : (
                     <></>
                   )}
                 </MenuItem>
-                <MenuItem onClick={graph}>graph</MenuItem>
               </Menu>
             </MenuItem>
             <Divider />
@@ -168,7 +158,7 @@ function Barrages() {
               {Barrage}
               <Divider />
               {user.role === "editor" || user.role === "admin" ? (
-                <Button LinkComponent={NavLink} to="/Add">
+                <Button fullWidth LinkComponent={NavLink} to="/Add">
                   ajouter un barrage
                   <Divider />
                 </Button>
@@ -178,23 +168,29 @@ function Barrages() {
             </AccordionDetails>
           </Accordion>
           <ListItem>
-            <Button LinkComponent={NavLink} to="/profile">
+            <Button fullWidth LinkComponent={NavLink} to="/profile">
               <ListItemText primary="Profile" />
             </Button>
           </ListItem>
           {user.role === "admin" ? (
             <ListItem>
-              <Button LinkComponent={NavLink} to="/admin">
+              <Button fullWidth LinkComponent={NavLink} to="/admin">
                 <ListItemText primary="Admin" />
               </Button>
             </ListItem>
           ) : (
             <></>
           )}
-          <ListItem button="true" onclick={logout}>
-            <ListItemButton>
+          <ListItem>
+            <Button
+              fullWidth
+              button="true"
+              onclick={logout}
+              LinkComponent={NavLink}
+              to="/"
+            >
               <ListItemText primary="Logout" />
-            </ListItemButton>
+            </Button>
           </ListItem>
         </List>
       </Drawer>

@@ -2,8 +2,9 @@ import { TextField, Toolbar, Alert, Box, Stack, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { UserContext } from "../../action/acces";
+import Header from "../../components/Header/Header3";
 import axios from "axios";
-import { Gender, anneeC, Form } from "./actions";
+import { Gender, Form } from "./actions";
 import { formS, box, stack, field, buttonS } from "../Change/style";
 
 function Add() {
@@ -37,17 +38,18 @@ function Add() {
 
   return (
     <Box className="container">
+      <Header />
       <Toolbar />
 
-      <h1>
-        Bienvenue {Gender()} {user.lastName} {user.firstName}
-      </h1>
-      <h3>
-        Veuillez remplir les cases suivantes avec les valeurs correspondantes :
-      </h3>
-      <h5>Ces Données sont observées à 7h {anneeC}</h5>
       <form className="formA" method="post" onSubmit={onSubmit} style={formS}>
         <Stack m={2} spacing={3} sx={stack}>
+          <h2>
+            Bienvenue {Gender()} {user.lastName} {user.firstName}
+          </h2>
+          <h3>
+            Veuillez remplir les cases suivantes avec les valeurs
+            correspondantes :
+          </h3>
           <TextField
             type="text"
             label="nom du barrage"

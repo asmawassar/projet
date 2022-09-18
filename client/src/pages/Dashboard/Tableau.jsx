@@ -77,16 +77,18 @@ function Tableau() {
             elevation={20}
           >
             <Box sx={box}>
-              <Typography sx={{ marginTop: 7 }}>
+              <Typography sx={{ marginTop: 4 }}>
                 <h1
                   className="font-effect-shadow-multiple"
-                  style={{ fontSize: "40px", color: "rgb(78, 60, 173)" }}
+                  style={{ fontSize: "40px", color: "rgb(156, 39, 176)" }}
                 >
                   Barrage {indicateur.nomBarrage}:
                 </h1>
               </Typography>
               <Box component="form" sx={{ mt: 1 }}>
                 <TextField
+                  color="secondary"
+                  focused
                   margin="normal"
                   sx={{
                     marginLeft: "7.5%",
@@ -95,21 +97,25 @@ function Tableau() {
                     marginBottom: 4,
                   }}
                   label="Gouvernorat:"
-                  defaultValue={`${indicateur.gouvernorat}`}
+                  value={`${indicateur.gouvernorat}`}
                   InputProps={{
                     readOnly: true,
                   }}
                 />
                 <TextField
+                  color="secondary"
+                  focused
                   margin="normal"
                   sx={{ width: "35%" }}
                   label="cours d'eau: "
-                  defaultValue={`${barrage.moyMois[1]}`}
+                  value={`${indicateur.coursEau}`}
                   InputProps={{
                     readOnly: true,
                   }}
-                />{" "}
+                />
                 <TextField
+                  color="secondary"
+                  focused
                   margin="normal"
                   sx={{
                     marginLeft: "7.5%",
@@ -118,23 +124,27 @@ function Tableau() {
                     marginBottom: 4,
                   }}
                   label="Debut des Traveaux:"
-                  defaultValue={`${indicateur.dateDebutTravaux}`}
+                  value={`${indicateur.dateDebutTravaux}`}
                   InputProps={{
                     readOnly: true,
                   }}
                 />{" "}
                 <TextField
+                  color="secondary"
+                  focused
                   margin="normal"
                   sx={{
                     width: "35%",
                   }}
                   label="Date de mise en service: "
-                  defaultValue={`${indicateur.dateMiseService}`}
+                  value={`${indicateur.dateMiseService}`}
                   InputProps={{
                     readOnly: true,
                   }}
                 />
                 <TextField
+                  color="secondary"
+                  focused
                   margin="normal"
                   sx={{
                     marginLeft: "7.5%",
@@ -143,18 +153,20 @@ function Tableau() {
                     marginBottom: 5,
                   }}
                   label="Capacité initiale: "
-                  defaultValue={`${indicateur.capaciteInitiale}`}
+                  value={`${indicateur.capaciteInitiale}`}
                   InputProps={{
                     readOnly: true,
                   }}
                 />
                 <TextField
+                  color="secondary"
+                  focused
                   margin="normal"
                   sx={{
                     width: "35%",
                   }}
                   label="Capacité utile: "
-                  defaultValue={`${indicateur.capaciteUtile}`}
+                  value={`${indicateur.capaciteUtile}`}
                   InputProps={{
                     readOnly: true,
                   }}
