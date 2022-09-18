@@ -3,15 +3,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { UserContext } from "../../action/acces";
 import axios from "axios";
-import {
-  jourP,
-  jourEtAnneP,
-  Gender,
-  anneeP,
-  anneeC,
-  Form,
-  stocks,
-} from "./actions";
+import { Gender, anneeC, Form } from "./actions";
 import { formS, box, stack, field, buttonS } from "../Change/style";
 
 function Add() {
@@ -19,26 +11,7 @@ function Add() {
   const { user } = useContext(UserContext);
   const [form, setForm] = Form();
   const [error, setError] = React.useState("");
-  const [next, setNext] = React.useState("");
 
-  function nextF() {
-    if (
-      stocks(
-        form.nomBarrage,
-        form.stockBarrageC,
-        form.stockBarrageP,
-        form.pourcentageStock
-      )
-    ) {
-      setError("");
-      if (next == "") setNext("next");
-      if (next == "next") setNext("nextnext");
-    } else setError("remplir tous");
-  }
-  function backF() {
-    if (next == "next") setNext("");
-    if (next == "nextnext") setNext("next");
-  }
   function updateForm(value) {
     return setForm((prev) => {
       return { ...prev, ...value };
@@ -50,7 +23,7 @@ function Add() {
     setError(0);
     axios({
       method: "post",
-      url: "http://localhost:5000/barrage/addBarrage",
+      url: "http://localhost:5000/barrage/create",
       data: form,
     })
       .then(function () {
@@ -75,102 +48,70 @@ function Add() {
       <h5>Ces Données sont observées à 7h {anneeC}</h5>
       <form className="formA" method="post" onSubmit={onSubmit} style={formS}>
         <Stack m={2} spacing={3} sx={stack}>
+          <TextField
+            type="text"
+            label="nom du barrage"
+            value={form.nomBarrage}
+            onChange={(e) => updateForm({ nomBarrage: e.target.value })}
+            required
+          />
           <Stack>
             <fieldset className="f2">
-              <legend>Stocks Aux Barrages</legend>
+              <legend>informations générales</legend>
               <Stack m={2} spacing={3} sx={field}>
                 <TextField
                   type="text"
-                  label={`Stocks Du ${anneeP}`}
-                  value={form.stockBarrage}
-                  onChange={(e) => updateForm({ stockBarrage: e.target.value })}
+                  label="gouvernorat"
+                  value={form.gouvernorat}
+                  onChange={(e) => updateForm({ gouvernorat: e.target.value })}
                   required
                 />
               </Stack>
-            </fieldset>{" "}
-          </Stack>
-
-          <Stack>
-            <Stack>
-              <fieldset className="f2">
-                <legend>Lachers</legend>
-                <Stack m={2} spacing={3} sx={field}>
-                  <TextField
-                    type="text"
-                    label={`Lachers Cumulées Du l'année ${jourEtAnneP}`}
-                    value={form.lachersAnnee}
-                    onChange={(e) =>
-                      updateForm({ lachersAnnee: e.target.value })
-                    }
-                    required
-                  />
-                  <TextField
-                    type="text"
-                    label={`Lachers Cumulées Du Mois au ${jourP}`}
-                    required
-                    value={form.lachersMois}
-                    onChange={(e) =>
-                      updateForm({ lachersMois: e.target.value })
-                    }
-                  />
-                  <TextField
-                    type="text"
-                    label={`Lachers Du ${jourEtAnneP}`}
-                    required
-                    value={form.lachersJour}
-                    onChange={(e) =>
-                      updateForm({ lachersJour: e.target.value })
-                    }
-                  />
-                  <TextField
-                    type="text"
-                    label="Lachers(*)"
-                    required
-                    value={form.probs}
-                    onChange={(e) => updateForm({ probs: e.target.value })}
-                  />
-                </Stack>
-              </fieldset>
-            </Stack>
-            <fieldset className="f2">
-              <legend>Apports</legend>
               <Stack m={2} spacing={3} sx={field}>
                 <TextField
                   type="text"
-                  label=" Moyenne Période "
+                  label="capacité initiale"
+                  value={form.capaciteInitiale}
+                  onChange={(e) =>
+                    updateForm({ capaciteInitiale: e.target.value })
+                  }
                   required
-                  value={form.moyPeriode}
-                  onChange={(e) => updateForm({ moyPeriode: e.target.value })}
                 />
                 <TextField
                   type="text"
-                  label={`  Apports Cumulés Du 01/09/20 au ${jourEtAnneP}`}
+                  label="capacité utile"
                   required
-                  value={form.apportsCummule}
+                  value={form.capaciteUtile}
                   onChange={(e) =>
-                    updateForm({ apportsCummule: e.target.value })
+                    updateForm({ capaciteUtile: e.target.value })
                   }
                 />
                 <TextField
                   type="text"
-                  label="Moyenne Du Mois"
+                  label="cours d'eau"
                   required
-                  value={form.moyMois}
-                  onChange={(e) => updateForm({ moyMois: e.target.value })}
+                  value={form.coursEau}
+                  onChange={(e) => updateForm({ coursEau: e.target.value })}
                 />
                 <TextField
                   type="text"
-                  label={` Apports Du Mois au ${jourP}`}
+                  label="date debut traveaux"
                   required
-                  value={form.apportMois}
-                  onChange={(e) => updateForm({ apportMois: e.target.value })}
+                  value={form.dateDebutTravaux}
+                  onChange={(e) =>
+                    updateForm({ dateDebutTravaux: e.target.value })
+                  }
                 />
+              </Stack>
+              <Stack m={2} spacing={3} sx={field}>
                 <TextField
                   type="text"
-                  label={`Apports Du ${jourP}`}
+                  label=" date fin traveaux "
                   required
-                  value={form.apportJour}
-                  onChange={(e) => updateForm({ apportJour: e.target.value })}
+                  value={form.dateMiseService}
+                  onChange={(e) =>
+                    updateForm({ dateMiseService: e.target.value })
+                  }
                 />
               </Stack>
             </fieldset>

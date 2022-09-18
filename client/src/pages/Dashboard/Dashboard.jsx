@@ -20,11 +20,7 @@ function Dashboard() {
         </>
       );
     }
-    return (
-      <>
-        <Profile />
-      </>
-    );
+    return <>choisir barrage</>;
   }
   return (
     <>

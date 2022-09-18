@@ -1,8 +1,16 @@
-import { Alert, Box, Button, NativeSelect, Stack, Snackbar } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  NativeSelect,
+  Stack,
+  Snackbar,
+  Toolbar,
+} from "@mui/material";
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
-
+import Header from "../../components/Header/Header3";
 function Admin() {
   const [Users, setUsers] = React.useState([]);
   const [role, setRole] = React.useState({ role: "", id: "" });
@@ -25,8 +33,11 @@ function Admin() {
   };
 
   async function onSubmit(e) {
-    setOpen(false);
-    setWarning(false);
+    if (role == "") {
+      setOpen(false);
+      setWarning(true);
+      return;
+    }
     axios({
       method: "PUT",
       url: "http://localhost:5000/user/updateUser",
@@ -49,7 +60,7 @@ function Admin() {
       const data = res.data;
       var id = 0;
       const users = data.map((u) => {
-        id++
+        id++;
         return {
           _id: u._id,
           id: id,
@@ -106,28 +117,40 @@ function Admin() {
   ];
 
   return (
-    <Box sx={{ height: 600, width: "100%" }}>
-      {affiche ?
-        (
-          <DataGrid rows={Users} columns={post} rowsPerPageOptions={[10,20,50,100]} disableSelectionOnClick="true"   />
+    <>
+      <Toolbar>
+        <Header />
+      </Toolbar>
+      <Box sx={{ height: 600, width: "100%" }}>
+        {affiche ? (
+          <DataGrid
+            rows={Users}
+            columns={post}
+            rowsPerPageOptions={[10, 20, 50, 100]}
+            disableSelectionOnClick="true"
+          />
         ) : (
-          <Button onClick={fetchData} >afficher users infos</Button>
+          <Button onClick={fetchData}>afficher users infos</Button>
         )}
 
-      <Stack spacing={2} sx={{ width: "100%" }}>
-        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-          <Alert onClose={handleClose} variant="filled" severity="success">
-            changes saved!
-          </Alert>
-        </Snackbar>
-        <Snackbar open={warning} autoHideDuration={3000} onClose={handleClose}>
-          <Alert onClose={handleClose} variant="filled" severity="error">
-            you did not make changes
-          </Alert>
-        </Snackbar>
-      </Stack>
-
-    </Box>
+        <Stack spacing={2} sx={{ width: "100%" }}>
+          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+            <Alert onClose={handleClose} variant="filled" severity="success">
+              changes saved!
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            open={warning}
+            autoHideDuration={3000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} variant="filled" severity="error">
+              you did not make changes
+            </Alert>
+          </Snackbar>
+        </Stack>
+      </Box>
+    </>
   );
 }
 export default Admin;

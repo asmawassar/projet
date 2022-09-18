@@ -11,20 +11,13 @@ export const jourP = `${jour - 1}/${mois}/${annee}`;
 
 export function Form() {
   const [form, setForm] = useState({
-    nomBarrage: null,
-    stockBarrage: null,
-    lachersAnnee: null,
-    lachersMois: null,
-    lachersJour: null,
-    probs: "",
-    moyPeriode: null,
-    apportsCummule: null,
-    moyMois: null,
-    apportMois: null,
-    apportJour: null,
-    date: anneeC,
-    annee: annee,
-    mois: mois,
+    nomBarrage: "",
+    gouvernorat: "",
+    capaciteInitiale: "",
+    capaciteUtile: "",
+    coursEau: "",
+    dateDebutTravaux: "",
+    dateMiseService: "",
   });
   return [form, setForm];
 }

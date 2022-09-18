@@ -1,37 +1,19 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../action/acces";
 import { DataGrid } from "@mui/x-data-grid";
-import axios from "axios";
 import {
   Stack,
   Box,
-  Toolbar,
   TextField,
   CssBaseline,
   Typography,
-  Avatar,
   Grid,
   Paper,
 } from "@mui/material";
-import { cadre } from "./style";
 import { box } from "../LogIn/style";
 
 function Tableau() {
-  const [Barrage, setBarrage] = React.useState([]);
-  const { barrage } = useContext(UserContext);
-  async function fetchData() {
-    try {
-      const res = await axios({
-        method: "get",
-        url: "http://localhost:5000/barrage/gets",
-        params: { nomBarrage: barrage.nomBarrage },
-      });
-      const info = res.data;
-      setBarrage(info);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const { barrage, indicateur } = useContext(UserContext);
   const col = [
     { field: "id", headerName: "id", width: 150, hide: "true" },
     { field: "date", headerName: "date", width: 100 },
@@ -72,7 +54,6 @@ function Tableau() {
     }
     return row;
   }
-  fetchData();
   const row = rows();
   return (
     <>
@@ -101,7 +82,7 @@ function Tableau() {
                   className="font-effect-shadow-multiple"
                   style={{ fontSize: "40px", color: "rgb(78, 60, 173)" }}
                 >
-                  Barrage {Barrage.nomBarrage}:
+                  Barrage {indicateur.nomBarrage}:
                 </h1>
               </Typography>
               <Box component="form" sx={{ mt: 1 }}>
@@ -114,7 +95,7 @@ function Tableau() {
                     marginBottom: 4,
                   }}
                   label="Gouvernorat:"
-                  defaultValue={`${Barrage.gouvernorat}`}
+                  defaultValue={`${indicateur.gouvernorat}`}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -123,7 +104,7 @@ function Tableau() {
                   margin="normal"
                   sx={{ width: "35%" }}
                   label="cours d'eau: "
-                  defaultValue={`${Barrage.coursEau}`}
+                  defaultValue={`${barrage.moyMois[1]}`}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -137,7 +118,7 @@ function Tableau() {
                     marginBottom: 4,
                   }}
                   label="Debut des Traveaux:"
-                  defaultValue={`${Barrage.dateDebutTravaux}`}
+                  defaultValue={`${indicateur.dateDebutTravaux}`}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -148,7 +129,7 @@ function Tableau() {
                     width: "35%",
                   }}
                   label="Date de mise en service: "
-                  defaultValue={`${Barrage.dateMiseService}`}
+                  defaultValue={`${indicateur.dateMiseService}`}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -162,7 +143,7 @@ function Tableau() {
                     marginBottom: 5,
                   }}
                   label="Capacité initiale: "
-                  defaultValue={`${Barrage.capaciteInitiale}`}
+                  defaultValue={`${indicateur.capaciteInitiale}`}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -173,7 +154,7 @@ function Tableau() {
                     width: "35%",
                   }}
                   label="Capacité utile: "
-                  defaultValue={`${Barrage.capaciteUtile}`}
+                  defaultValue={`${indicateur.capaciteUtile}`}
                   InputProps={{
                     readOnly: true,
                   }}

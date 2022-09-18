@@ -1,8 +1,8 @@
+import Header from "../../components/Header/Header3";
 import { UserContext } from "../../action/acces";
 import React, { useContext } from "react";
 import {
   Box,
-  Toolbar,
   TextField,
   CssBaseline,
   Typography,
@@ -15,7 +15,7 @@ function Profile() {
   const { user } = useContext(UserContext);
   return (
     <>
-      <Toolbar />
+      <Header />
       <Grid container component="main" justifyContent="center">
         <CssBaseline />
         <Grid

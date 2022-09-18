@@ -32,38 +32,51 @@ const drawerWidth = 240;
 
 function Barrages() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [anchorEl1, setAnchorEl1] = React.useState(null);
-  const { userState } = useContext(UserContext);
+  const { userState, pageState } = useContext(UserContext);
   const navigate = useNavigate();
-
+  function admin() {
+    pageState("admin");
+  }
+  function profile() {
+    pageState("profile");
+  }
   function logout() {
     userState("false");
     navigate("/");
   }
   const open = Boolean(anchorEl);
-  const open1 = Boolean(anchorEl1);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleClick1 = (event) => {
-    setAnchorEl1(event.currentTarget);
-  };
-  const handleClose1 = () => {
-    setAnchorEl1(null);
-  };
-  const { user, barrageState } = useContext(UserContext);
+
+  const { user, barrageState, indicateurState } = useContext(UserContext);
   const [Barrage, setBarrage] = useState([]);
 
+  async function fetchData2(barrage) {
+    try {
+      const res = await axios({
+        method: "get",
+        url: "http://localhost:5000/barrage/gets",
+        params: { nomBarrage: barrage.nomBarrage },
+      });
+      const info = res.data;
+      indicateurState(info);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   async function fetchData() {
     try {
       const res = await axios.get("http://localhost:5000/barrage/get");
       const data = res.data;
       const barrages = data.map((u) => {
         function change() {
+          fetchData2(u);
           barrageState(u);
+          pageState("tableau");
           handleClose();
         }
         function graph() {
@@ -165,12 +178,21 @@ function Barrages() {
             </AccordionDetails>
           </Accordion>
           <ListItem>
-            <ListItemButton>
+            <Button LinkComponent={NavLink} to="/profile">
               <ListItemText primary="Profile" />
-            </ListItemButton>
-          </ListItem>{" "}
-          <ListItem>
-            <ListItemButton onclick={logout} LinkComponent={NavLink} to="/">
+            </Button>
+          </ListItem>
+          {user.role === "admin" ? (
+            <ListItem>
+              <Button LinkComponent={NavLink} to="/admin">
+                <ListItemText primary="Admin" />
+              </Button>
+            </ListItem>
+          ) : (
+            <></>
+          )}
+          <ListItem button="true" onclick={logout}>
+            <ListItemButton>
               <ListItemText primary="Logout" />
             </ListItemButton>
           </ListItem>

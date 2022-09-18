@@ -5,6 +5,7 @@ import LogIn from "./pages/LogIn/LogIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Profile from "./pages/profile/Profile";
+import Admin from "./pages/profile/Admin";
 import Barrages from "./pages/barrage/barrage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContext } from "./action/acces";
@@ -45,6 +46,7 @@ function App() {
           <Route path="/" element={<FirstPage />} />
           <Route path="/barrage" element={<Barrages />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/Add" element={<Add />} />
           <Route path="/Change" element={<Change />} />
           <Route path="/LogIn" element={<LogIn />} />
