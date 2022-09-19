@@ -14,8 +14,8 @@ function Header2() {
           </Link>
         </Stack>
         <Stack spacing={1}>
-          <Button LinkComponent={NavLink} sx={ButtonS} to="/login">
-           Connexion/Inscription
+          <Button LinkComponent={NavLink} sx={ButtonS} to="/signup">
+            Inscription
           </Button>
         </Stack>
       </Toolbar>

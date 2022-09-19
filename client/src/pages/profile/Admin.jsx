@@ -108,7 +108,7 @@ function Admin() {
     },
     {
       field: "save",
-      headerName: "Enregistrement",
+      headerName: "Enregistrer",
       width: 130,
       renderCell: () => {
         return (
@@ -160,7 +160,7 @@ function Admin() {
             </Snackbar>
           </Stack>
         </Box>
-      </div>{" "}
+      </div>
       <div class="area2">
         <ul class="circles">
           <li></li>

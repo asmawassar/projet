@@ -17,8 +17,8 @@ function Tableau() {
   const col = [
     { field: "id", headerName: "id", width: 150, hide: "true" },
     { field: "date", headerName: "date", width: 100 },
-    { field: "mois", headerName: "mois", width: 50 },
-    { field: "annee", headerName: "annee", width: 65 },
+    { field: "mois", headerName: "mois", width: 50, hide: "true" },
+    { field: "annee", headerName: "annee", width: 65, hide: "true" },
     { field: "stockBarrage", headerName: "stock du barrage", width: 150 },
     { field: "lachersAnnee", headerName: "lachersAnnee ", width: 150 },
     { field: "lachersMois", headerName: "lachersMois", width: 150 },
